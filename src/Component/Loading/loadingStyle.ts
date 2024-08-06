@@ -38,6 +38,7 @@ export const SubDiv = styled.div`
     font-size : ${fontSize.title};
     margin-left : 73px;
     margin-bottom : 116px;
+    font-weight: 900;
 `
 
 export const Img = styled.img`
