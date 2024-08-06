@@ -17,4 +17,4 @@ COPY . .
 CMD ["npm", "start"]
 
 # 포트 노출
-EXPOSE 80
+EXPOSE 3000
