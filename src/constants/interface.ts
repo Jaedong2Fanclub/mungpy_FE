@@ -28,6 +28,7 @@ export interface Dog {
     kind: string | null;
     name: string;
     image: string;
+    description : string;
     personality: string[];
     rescuePlace: string;
     protectPlace: string;

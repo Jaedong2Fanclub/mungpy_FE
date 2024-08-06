@@ -10,12 +10,14 @@ import Button from "../Button/button";
 import share from '../../img/share_.png';
 
 const DetailResult = () => {
-    const {id} = useParams();
+    const {id} = useParams<{id:string}>();
     const [dogData, setDogData] = useState<Dog>();
+    const [imageSrc, setImageSrc] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`/dog/${id}`, {
+        const dogId = Number(id);
+        axios.get(`/dog/${dogId}`, {
             headers : {
                 'Content-Type': 'application/json',
                 'ngrok-skip-browser-warning': '69420'
@@ -29,6 +31,31 @@ const DetailResult = () => {
             console.error(error);
         })
     },[id]);
+
+    useEffect(() => {
+        if (dogData?.image) {
+            const fetchImage = async () => {
+                try {
+                    const response = await fetch(`https://394c-123-214-153-130.ngrok-free.app${dogData.image}`, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'ngrok-skip-browser-warning': '69420'
+                        }
+                    });
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const blob = await response.blob();
+                    const url = URL.createObjectURL(blob);
+                    setImageSrc(url);
+                } catch (error) {
+                    console.error('Error fetching image:', error);
+                }
+            };
+
+            fetchImage();
+        }
+    }, [dogData?.image]);
 
     if(!dogData) {
         return <div>Loading...</div>
@@ -44,16 +71,12 @@ const DetailResult = () => {
                 <D.Title>{dogData?.protectPlace}</D.Title>
             </div>
             <D.DogContainer>
-                <div>
-                <D.Image src={dogData?.image}/>
-                </div>
-                <D.DogDiv>
-                    <D.Info><D.InfoLabel>이름 : </D.InfoLabel>{dogData?.name}</D.Info>
-                    <D.Info><D.InfoLabel>성별 : </D.InfoLabel>{dogData?.sex === 'F' ? <D.SexImage src={girl}/> : <D.SexImage src={boy}/>}</D.Info>
-                    <D.Info><D.InfoLabel>나이 :</D.InfoLabel>{dogData?.age}세</D.Info>
-                </D.DogDiv>
+                <D.Image src={imageSrc}/>
             </D.DogContainer>
             <D.LabelDiv>
+                <D.Info><D.InfoLabel>이름 : </D.InfoLabel>{dogData?.name}</D.Info>
+                <D.Info><D.InfoLabel>성별 : </D.InfoLabel>{dogData?.sex === 'F' ? <D.SexImage src={girl}/> : <D.SexImage src={boy}/>}</D.Info>
+                <D.Info><D.InfoLabel>나이 :</D.InfoLabel>{dogData?.age}세</D.Info>
                 <D.Info><D.InfoLabel>품종 : </D.InfoLabel>{dogData?.kind || '알 수 없음'}</D.Info>
                 <D.Info><D.InfoLabel>구조 장소 : </D.InfoLabel>{dogData?.rescuePlace}</D.Info>
                 <D.Info><D.InfoLabel>보호 만료일 : </D.InfoLabel>{dogData?.expirationDate}</D.Info>

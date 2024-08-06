@@ -4,12 +4,14 @@ import Button from "../Button/button";
 import { useLocation, useNavigate } from "react-router-dom";
 import {Main2_Container, Main2_P, Main2_P2} from './mainStyle';
 import axios from "axios";
+import Loading from "../Loading/loading";
 
 const Main2:React.FC = () => {
     const location = useLocation();
     const navigator = useNavigate();
     const [imageFile, setImageFile] = useState<File|null>(null);
     const [selectedTraits, setSelectedTraits] = useState<string[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const state = location.state as {selectedOptions: string[]};
@@ -32,18 +34,25 @@ const Main2:React.FC = () => {
         const formData = new FormData();
         formData.append('image', imageFile);
         formData.append('personality', JSON.stringify(selectedTraits));
-
+        
+        setIsLoading(true);
         try{
-            await axios.post('/dog', formData, {
+            const response = await axios.post('/dog', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            navigator("/loading");
+            const { id } = response.data; 
+            navigator(`/result/${id}`);
         } catch (error) {
             console.error(error);
+            setIsLoading(false);
         }
     };
+
+    if (isLoading) {
+        return <Loading />; // Display Loading component while loading
+    }
 
     return (
         <Main2_Container>

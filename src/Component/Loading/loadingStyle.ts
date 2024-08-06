@@ -12,10 +12,14 @@ const dotAnimation = keyframes`
 `;
 
 export const Box = styled.div`
+    width: 600px;
+    height: 800px;
     display: flex;
     flex-direction: column;
-    align-content: center;
-    justify-content: center;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    text-align: center;
     align-items: center;
 `
 
@@ -23,6 +27,7 @@ export const P = styled.p`
     font-size : ${fontSize.title};
     margin-top : 200px;
     margin-left : 73px;
+    font-weight: 900;
 `
 
 export const SubDiv = styled.div`

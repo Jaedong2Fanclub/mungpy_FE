@@ -46,17 +46,20 @@ const Btn = styled.button<ButtonProps>`
             height : 68px;
             border-radius : 10px;
             font-weight: 900;
+            margin-top: 2rem;
         `
     }
     ${props =>
         props.variant === 'ShareBtn' &&
         css`
-            border: 1px soild ${Color.hover};
+            border: 2px solid #525CEB;
             background: none;
             width : 84px;
             height : 68px;
             border-radius : 10px;
             font-weight: 900;
+            margin-left: 16px;
+            margin-top: 2rem;
         `
     }
     & :hover{

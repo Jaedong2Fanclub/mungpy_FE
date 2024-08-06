@@ -2,20 +2,26 @@ import styled from "styled-components";
 import { fontSize } from "../../Styles/font";
 
 export const Box = styled.div`
-    display : flex;
+    width: 600px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    text-align: center;
     align-items: center;
-    flex-direction: column; 
-    flex-wrap: wrap;
 `
 
 export const P = styled.p`
     font-size : ${fontSize.logoTitle};
-    font-weight : bold;
+    font-weight : 900;
 `
 
 export const SubTitle = styled.p`
-    font-size : ${fontSize.subTitle};
-    margin-bottom : 25px;
+    font-size : 25px;
+    margin-top: 1rem;
+    margin-bottom: 25px;
 `
 
 export const Div = styled.div`
@@ -43,12 +49,15 @@ export const Grass = styled.div`
 `
 
 export const Main2_Container = styled.div`
+    width: 600px;
+    height: 800px;
     display: flex;
     flex-direction: column;
-    align-content: center;
-    justify-content: center;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    text-align: center;
     align-items: center;
-    flex-wrap: wrap;
 `
 
 export const Main3_P = styled.p`
@@ -56,24 +65,28 @@ export const Main3_P = styled.p`
     align-self: flex-start; 
     margin-top : 79px;
     margin-left : 22px;
+    font-weight: 900;
 `
 export const Main3_P2 = styled.p`
     font-size : ${fontSize.title};
     align-self: flex-start; 
     margin-bottom : 45px;
     margin-left : 22px;
+    font-weight: 900;
 `
 
 export const Main2_P = styled.p`
     font-size : ${fontSize.title};
     align-self: flex-start; 
     margin-top : 114px;
-    margin-left : 22px;
+    margin-left: 9rem;
+    font-weight: 900;
 `
 
 export const Main2_P2 = styled.p`
     font-size : ${fontSize.title};
     align-self: flex-start;
-    margin-left : 22px;
+    margin-left: 9rem;
     margin-bottom : 133px;
+    font-weight: 900;
 `

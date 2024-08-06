@@ -4,22 +4,27 @@ import { Color } from "../../Styles/color";
 
 export const P = styled.p`
     font-size : ${fontSize.title};
+    font-weight: 900;
     align-self: flex-start; 
     margin-top : 114px;
+    margin-bottom : 42px;
     margin-left : 22px;
 `
 
 export const Container = styled.div`
+    width: 600px;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    text-align: center;
     align-items: center;
-    padding: 2rem;
 `;
 
 export const ImageWrapper = styled.div`
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    width: 350px;
+    border-radius: 10%;
     overflow: hidden;
     margin-bottom: 1rem;
 
@@ -66,6 +71,7 @@ export const Heart = styled.span`
 
 // 여기부터는 디테일 페이지 스타일
 export const D_Container = styled.div`
+    width: 600px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -80,16 +86,16 @@ export const Title = styled.p`
     border: 2px solid #007BFF;
     border-radius: 20px;
     padding: 10px;
-    display: inline-block;
+    display: flex;
     margin-bottom: 34px;
     font-size: ${fontSize.small};
     font-weight: bold;
+    justify-content: center;
 `;
 
 export const Image = styled.img`
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    width: 350px;
+    border-radius: 10%;
     object-fit: cover;
     margin-bottom: 20px;
 `;
@@ -102,7 +108,7 @@ export const Info = styled.div`
     justify-content: space-between;
 `;
 
-export const InfoLabel = styled.div`
+export const InfoLabel = styled.span`
     font-weight: bold;
 `;
 
@@ -119,7 +125,6 @@ export const Tag = styled.span<{ bgColor?: string }>`
     border-radius: 5px;
     margin: 5px;
     font-size: 14px;
-    width : 70px;
 `;
 
 export const SexImage = styled.img `

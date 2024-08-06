@@ -15,8 +15,8 @@ const Router = () => {
                 <Route path="/main2" element={<ProfileUploadPage />}/>
                 <Route path="/personality" element={<PersonalityPage />}/>
                 <Route path="/loading" element={<LoadingPage />}/>
-                <Route path="/result" element={<ResultPage />}/>
-                <Route path="/detail" element={<DetailPage />}/>
+                <Route path="/result/:id" element={<ResultPage />}/>
+                <Route path="/detail/:id" element={<DetailPage />}/>
             </Routes>
         </BrowserRouter>
     )

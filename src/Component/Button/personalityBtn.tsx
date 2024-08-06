@@ -8,7 +8,7 @@ const ButtonContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 15%;
+    width: 50%;
 `;
 
 const Button1 = styled.button<{ selected: boolean }>`
