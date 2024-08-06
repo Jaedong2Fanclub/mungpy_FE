@@ -51,6 +51,18 @@ export const Main2_Container = styled.div`
     flex-wrap: wrap;
 `
 
+export const Main3_P = styled.p`
+    font-size : ${fontSize.title};
+    align-self: flex-start; 
+    margin-top : 79px;
+    margin-left : 22px;
+`
+export const Main3_P2 = styled.p`
+    font-size : ${fontSize.title};
+    align-self: flex-start; 
+    margin-bottom : 45px;
+    margin-left : 22px;
+`
 
 export const Main2_P = styled.p`
     font-size : ${fontSize.title};

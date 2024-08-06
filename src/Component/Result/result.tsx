@@ -1,55 +1,57 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import * as M from "../Main/mainStyle";
 import { Dog } from "../../constants/interface";
 import { Container, ImageWrapper, DogName, Subtitle, Description, Divider, Bio, Heart} from './resultStyle';
+import Button from "../Button/button";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Result = () => {
-    const [dog, setDog] = useState<Dog | null>(null);
+    const {id} = useParams();
+    const [dogData, setDogData] = useState<Dog>();
+    const navigator = useNavigate();
 
-    const getDog = async (id: number) => {
-        const SERVER_URL = process.env.REACT_APP_BASE_URL;
-        try {
-            const response = await axios.get(`${SERVER_URL}/dog/${id}`);
-            console.log(response.data);
-            return response.data;
-        } catch (error) {
-            console.error("Error fetching dog data", error);
-            throw error;
-        }
-    };
+    function NextPage() {
+        navigator("/detail");
+    }
 
     useEffect(() => {
-        const fetchDogData = async () => {
-        try {
-            const data = await getDog(1);
-            setDog(data);
-        } catch (error) {
-            console.error("Failed to fetch dog data");
-        }
-        };
-        fetchDogData();
-    }, []);
+        axios.get(`/dog/${id}`, {
+            headers : {
+                'Content-Type': 'application/json',
+                'ngrok-skip-browser-warning': '69420'
+            },
+        })
+        .then(res => {
+            console.log(res.data);
+            setDogData(res.data);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+    },[id]);
 
-    if (!dog) {
-        return <div>Loading...</div>;
+    if(!dogData) {
+        return <div>Loading...</div>
     }
 
     return (
         <Container>
             <ImageWrapper>
-                <img src={`/image/${dog.image}`} alt={dog.name} />
+                <img src={`/image/${dogData.image}`} alt={dogData.name} />
             </ImageWrapper>
-            <DogName>{dog.name}</DogName>
+            <DogName>{dogData.name}</DogName>
             <Subtitle>*이름은 임시입니다.</Subtitle>
-            <Description>{dog.personality.join(", ")}</Description>
+            <Description>{dogData.personality.join(", ")}</Description>
             <Divider />
             <Bio>
                 안녕하세요:-)<br/>
-                저는 {dog.rescuePlace}에서 발견된 {dog.name}입니다!<br/>
+                저는 {dogData.rescuePlace}에서 발견된 {dogData.name}입니다!<br/>
                 저는 활발하고 산책 나나가는걸 좋아해요.
             </Bio>
             <Heart>❤</Heart>
+            <div style={{marginTop: '157px'}}>
+                <Button type="submit" variant={'NextBtn'} onClick={NextPage}>다음</Button>
+            </div>
         </Container>
     )
 }

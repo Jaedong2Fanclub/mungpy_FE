@@ -6,10 +6,12 @@ import Router from './router';
 
 function App() {
   return (
-    <MobileView>
+    <>
+    {/* <MobileView> */}
       <GlobalStyle/>
       <Router/>
-    </MobileView>
+    {/* </MobileView> */}
+    </>
   );
 }
 

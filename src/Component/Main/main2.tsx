@@ -1,21 +1,49 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProfileImgUpload from "./profile/profile"
 import Button from "../Button/button";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {Main2_Container, Main2_P, Main2_P2} from './mainStyle';
+import axios from "axios";
 
-const Main2 = () => {
+const Main2:React.FC = () => {
+    const location = useLocation();
     const navigator = useNavigate();
+    const [imageFile, setImageFile] = useState<File|null>(null);
+    const [selectedTraits, setSelectedTraits] = useState<string[]>([]);
 
-    function NextPage() {
-        navigator("/personality");
-    }
+    useEffect(() => {
+        const state = location.state as {selectedOptions: string[]};
+        if(state && state.selectedOptions) {
+            setSelectedTraits(state.selectedOptions);
+        }
+    },[location.state]);
 
     const handleImageLoad = (file: File) => {
         console.log("Image loaded:", file);
+        setImageFile(file);
     };
 
-    
+    const handleNext = async() => {
+        if(!imageFile) {
+            alert("사용자님의 이미지가 필요해요!");
+            return;
+        }
+        
+        const formData = new FormData();
+        formData.append('image', imageFile);
+        formData.append('personality', JSON.stringify(selectedTraits));
+
+        try{
+            await axios.post('/dog', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            navigator("/loading");
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <Main2_Container>
@@ -25,7 +53,7 @@ const Main2 = () => {
                 <ProfileImgUpload onImageLoad={handleImageLoad}/>
             </div>
             <div style={{marginTop: '216px'}}>
-                <Button type="submit" variant={'NextBtn'} onClick={NextPage}>다음</Button>
+                <Button type="submit" variant={'NextBtn'} onClick={handleNext}>다음</Button>
             </div>
         </Main2_Container>
     )

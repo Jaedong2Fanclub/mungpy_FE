@@ -4,6 +4,7 @@ import ProfileUploadPage from "./Pages/profilePage";
 import PersonalityPage from "./Pages/PersonalityPage";
 import LoadingPage from "./Pages/loadingPage";
 import ResultPage from "./Pages/resultPage";
+import DetailPage from "./Pages/detailPage";
 
 
 const Router = () => {
@@ -15,7 +16,7 @@ const Router = () => {
                 <Route path="/personality" element={<PersonalityPage />}/>
                 <Route path="/loading" element={<LoadingPage />}/>
                 <Route path="/result" element={<ResultPage />}/>
-                
+                <Route path="/detail" element={<DetailPage />}/>
             </Routes>
         </BrowserRouter>
     )

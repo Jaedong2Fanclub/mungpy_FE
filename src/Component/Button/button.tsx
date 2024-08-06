@@ -37,6 +37,28 @@ const Btn = styled.button<ButtonProps>`
             font-weight: 900;
         `
     }
+    ${props =>
+        props.variant === 'HomeBtn' &&
+        css`
+            background: ${Color.hover};
+            font-size : ${fontSize.title};
+            width : 240px;
+            height : 68px;
+            border-radius : 10px;
+            font-weight: 900;
+        `
+    }
+    ${props =>
+        props.variant === 'ShareBtn' &&
+        css`
+            border: 1px soild ${Color.hover};
+            background: none;
+            width : 84px;
+            height : 68px;
+            border-radius : 10px;
+            font-weight: 900;
+        `
+    }
     & :hover{
         background : ${Color.hover}
     }

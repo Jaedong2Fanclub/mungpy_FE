@@ -8,7 +8,12 @@ export interface InputProps {
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: 'submitBtn' | 'NextBtn';
+    variant?: 'submitBtn' | 'NextBtn' | 'HomeBtn' | 'ShareBtn';
+}
+
+export interface ButtonGroupProps {
+    selectedOptions: string[];
+    setSelectedOptions: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export interface ProfileImgUploadProps {
@@ -28,4 +33,11 @@ export interface Dog {
     protectPlace: string;
     protectTelno: string;
     expirationDate: string;
+    latitude?: number;
+    longitude?: number;
+}
+
+export interface MapState {
+    center: { lat: number; lng: number };
+    level: number;
 }

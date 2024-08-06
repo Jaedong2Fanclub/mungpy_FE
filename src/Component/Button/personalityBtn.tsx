@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, {css} from "styled-components";
 import { PersonalityOptions } from "../../constants/personailty";
 import { Color } from "../../Styles/color";
+import { ButtonGroupProps } from "../../constants/interface";
 
 const ButtonContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 20%;
+    width: 15%;
 `;
 
-const Button = styled.button<{ selected: boolean }>`
+const Button1 = styled.button<{ selected: boolean }>`
     display: flex;
     height: 46px;
     width: 140px;
@@ -33,34 +34,33 @@ const Button = styled.button<{ selected: boolean }>`
 `;
 
 
-const ButtonGroup: React.FC= () => {
-    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+const ButtonGroup: React.FC<ButtonGroupProps> = ({selectedOptions, setSelectedOptions}: any) => {
+    const handleClick = (option: string, oppositeOption: string) => {
+        setSelectedOptions((prev:any) =>
+        prev.includes(option)
+            ? prev.filter((item:any) => item !== option)
+            : [...prev.filter((item:any) => item !== oppositeOption), option]
+        );
+    };
 
-const handleClick = (option: string, oppositeOption: string) => {
-    setSelectedOptions((prev) =>
-    prev.includes(option)
-        ? prev.filter((item) => item !== option)
-        : [...prev.filter((item) => item !== oppositeOption), option]
-    );
-};
-return (
-    <ButtonContainer>
-        {PersonalityOptions.map(([left, right]) => (
-            <React.Fragment key={left + right}>
-            <Button
-                onClick={() => handleClick(left, right)}
-                selected={selectedOptions.includes(left)}
-            >
-                {left}
-            </Button>
-            <Button
-                onClick={() => handleClick(right, left)}
-                selected={selectedOptions.includes(right)}
-            >
-                {right}
-            </Button>
-            </React.Fragment>
-        ))}
+    return (
+        <ButtonContainer>
+            {PersonalityOptions.map(([left, right]) => (
+                <React.Fragment key={left + right}>
+                <Button1
+                    onClick={() => handleClick(left, right)}
+                    selected={selectedOptions.includes(left)}
+                >
+                    {left}
+                </Button1>
+                <Button1
+                    onClick={() => handleClick(right, left)}
+                    selected={selectedOptions.includes(right)}
+                >
+                    {right}
+                </Button1>
+                </React.Fragment>
+            ))}
         </ButtonContainer>
     );
 };

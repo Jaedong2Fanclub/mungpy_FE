@@ -7,7 +7,7 @@ const MainPage = () => {
     const navigate = useNavigate();
 
     function NextPage() {
-        navigate("/main2");
+        navigate("/personality");
     }
 
     return (

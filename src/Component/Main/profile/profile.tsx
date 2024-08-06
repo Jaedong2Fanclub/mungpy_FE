@@ -1,4 +1,4 @@
-import React, { ChangeEvent, forwardRef, useRef, useState, FocusEvent } from 'react';
+import React, { ChangeEvent, forwardRef, useRef, useState } from 'react';
 import { ProfileImgUploadProps } from '../../../constants/interface';
 import { ProfileUploadWrapper, ProfiledUpload, Span } from './profileStyle';
 

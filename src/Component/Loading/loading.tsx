@@ -12,7 +12,7 @@ const Loading = () => {
             setLoading(false);
             setSuccess(true);
             setTimeout(() => {
-                navigate('/result'); // Replace with your target route
+                navigate('/detail'); // Replace with your target route
             }, 1000); // Delay for showing the success state before navigation
         }, 10000);
 
