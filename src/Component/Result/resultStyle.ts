@@ -50,6 +50,9 @@ export const Subtitle = styled.p`
 export const Description = styled.p`
     font-size: 1rem;
     margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 25px;
+    margin-top: 1rem;
 `;
 
 export const Divider = styled.hr`
@@ -62,6 +65,7 @@ export const Bio = styled.p`
     font-size: 1rem;
     text-align: center;
     margin-bottom: 1rem;
+    width: 400px;
 `;
 
 export const Heart = styled.span`
@@ -114,6 +118,7 @@ export const InfoLabel = styled.span`
 
 export const TagContainer = styled.div`
     margin-top: 20px;
+    width: 400px;
 `;
 
 export const Tag = styled.span<{ bgColor?: string }>`

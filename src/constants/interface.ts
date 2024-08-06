@@ -29,6 +29,7 @@ export interface Dog {
     name: string;
     image: string;
     description : string;
+    matchReason: string;
     personality: string[];
     rescuePlace: string;
     protectPlace: string;

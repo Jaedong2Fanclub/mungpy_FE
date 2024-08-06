@@ -17,7 +17,7 @@ const Result = () => {
     const [imageSrc, setImageSrc] = useState('');
 
     useEffect(() => {
-        axios.get(`/dog/${id}`, {
+        axios.get(`http://backend:8080/dog/${id}`, {
             headers : {
                 'Content-Type': 'application/json',
                 'ngrok-skip-browser-warning': '69420'
@@ -36,7 +36,7 @@ const Result = () => {
         if (dogData?.image) {
             const fetchImage = async () => {
                 try {
-                    const response = await fetch(`https://394c-123-214-153-130.ngrok-free.app${dogData.image}`, {
+                    const response = await fetch(`http://backend:8080${dogData.image}`, {
                         headers: {
                             'Content-Type': 'application/json',
                             'ngrok-skip-browser-warning': '69420'
@@ -73,7 +73,7 @@ const Result = () => {
             <Description>{dogData.description}</Description>
             <Divider />
             <Bio>
-                {/* {dogData.matchReason} */}
+                {dogData.matchReason}
             </Bio>
             <Heart>❤</Heart>
             <div style={{marginTop: '157px'}}>

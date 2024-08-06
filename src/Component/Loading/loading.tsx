@@ -14,7 +14,7 @@ const Loading = () => {
             setTimeout(() => {
                 // navigate(`/result/${id}`); // Replace with your target route
             }, 1000); // Delay for showing the success state before navigation
-        }, 5000);
+        }, 10000);
 
         return () => clearTimeout(timer);
     },[navigate]);
