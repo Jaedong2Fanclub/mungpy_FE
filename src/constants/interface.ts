@@ -8,7 +8,7 @@ export interface InputProps {
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: 'submitBtn' | 'NextBtn' | 'HomeBtn' | 'ShareBtn';
+    variant?: 'submitBtn' | 'NextBtn' | 'HomeBtn' | 'ShareBtn' | 'registrationBtn' | 'submit';
 }
 
 export interface ButtonGroupProps {

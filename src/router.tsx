@@ -5,7 +5,9 @@ import PersonalityPage from "./Pages/PersonalityPage";
 import LoadingPage from "./Pages/loadingPage";
 import ResultPage from "./Pages/resultPage";
 import DetailPage from "./Pages/detailPage";
-
+import Home from "./Component/Plus/home";
+import Enrollment from "./Component/Registration";
+import Enrollment2 from "./Component/Registration/index2";
 
 const Router = () => {
     return (
@@ -17,6 +19,9 @@ const Router = () => {
                 <Route path="/loading" element={<LoadingPage />}/>
                 <Route path="/result/:id" element={<ResultPage />}/>
                 <Route path="/detail/:id" element={<DetailPage />}/>
+                <Route path="/home" element={<Home />}/>
+                <Route path="/registration" element={<Enrollment/>}/>
+                <Route path="/registration2" element={<Enrollment2/>}/>
             </Routes>
         </BrowserRouter>
     )

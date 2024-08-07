@@ -62,6 +62,40 @@ const Btn = styled.button<ButtonProps>`
             margin-top: 2rem;
         `
     }
+    ${props =>
+        props.variant === 'registrationBtn' &&
+        css`
+            background: none;
+            width : 162px;
+            height : 56px;
+            border-radius : 10px;
+            font-weight: 900;
+            margin-left: 16px;
+            margin-top: 2rem;
+            background: ${Color.hover};
+            font-size : ${fontSize.title};
+        `
+    }
+    ${props =>
+        props.variant === 'submit' &&
+        css`
+            display: flex;
+            border: none;
+            color: #ffffff;
+            align-items: center;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #525CEB;
+            font-size: 25px;
+            width: 550px;
+            height: 56px;
+            border-radius: 10px;
+            font-weight: 900;
+            justify-content: center;
+            margin-left: 2rem;
+        `
+    }
+    
     & :hover{
         background : ${Color.hover}
     }
