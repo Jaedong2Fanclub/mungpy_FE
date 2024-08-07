@@ -15,8 +15,8 @@ const MainPage = () => {
             <M.Img src="/image/sfzLogo.png"/>
             <M.Div>
             <M.P>멍피</M.P>
-                <M.SubTitle>나와 닮은 반려견을 찾아보아요!</M.SubTitle>
-                <M.SmallP>나의 성향과 이미지를 반영한 반려견 알아보기</M.SmallP>
+                <M.SubTitle>나와 닮은 유기견을 찾아보아요!</M.SubTitle>
+                <M.SmallP>나의 성향과 이미지를 반영한 유기견 알아보기</M.SmallP>
             </M.Div>
             <div style={{margin: '67px'}}>
                 <Button type="submit" variant={'submitBtn'} onClick={NextPage}>시작하기</Button>
