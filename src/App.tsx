@@ -1,17 +1,16 @@
 import React from 'react';
 import './App.css';
 import { GlobalStyle } from './Styles/globalStyle';
-import { MobileView } from 'react-device-detect';
 import Router from './router';
+import {Provider as MyProvider} from 'react-redux';
+import store from "./store/store";
 
 function App() {
   return (
-    <>
-    {/* <MobileView> */}
+    <MyProvider store={store}>
       <GlobalStyle/>
       <Router/>
-    {/* </MobileView> */}
-    </>
+    </MyProvider>
   );
 }
 

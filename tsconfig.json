@@ -18,9 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "noImplicitAny": true, // 암시적 any 사용 방지
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src/**/*"], // 포함 경로
+  "exclude": ["node_modules"] // 제외 경로
 }

@@ -14,4 +14,4 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ placeholder, type, siz
     return <InputBox ref={ref} placeholder={placeholder} type={type} size={size} {...rest} />
 });
 
-export default Input;
+export default Input; 

@@ -8,11 +8,11 @@ export const P = styled.p`
     align-self: flex-start; 
     margin-top : 114px;
     margin-bottom : 42px;
-    margin-left : 22px;
 `
 
 export const Container = styled.div`
     width: 600px;
+    height: 800px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -20,6 +20,12 @@ export const Container = styled.div`
     margin: 20px auto;
     text-align: center;
     align-items: center;
+    justify-content: center;
+    @media (max-width: 768px) {
+        width: 90%;
+        height: 100%;
+        padding: 10px;
+    }
 `;
 
 export const ImageWrapper = styled.div`
@@ -64,8 +70,8 @@ export const Divider = styled.hr`
 export const Bio = styled.p`
     font-size: 1rem;
     text-align: center;
-    margin-bottom: 1rem;
-    width: 400px;
+    width: 350px;
+    margin-top: 1rem;
 `;
 
 export const Heart = styled.span`
@@ -76,6 +82,7 @@ export const Heart = styled.span`
 // 여기부터는 디테일 페이지 스타일
 export const D_Container = styled.div`
     width: 600px;
+    height: 800px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -83,6 +90,12 @@ export const D_Container = styled.div`
     margin: 20px auto;
     text-align: center;
     align-items: center;
+    justify-content: center;
+    @media (max-width: 768px) {
+        width: 90%;
+        height: 100%;
+        padding: 10px;
+    }
 `;
 
 export const Title = styled.p`
@@ -154,7 +167,7 @@ export const DogContainer = styled.div`
 export const LabelDiv = styled.div`
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 90%;
 `
 
 export const CenterDiv = styled.div`

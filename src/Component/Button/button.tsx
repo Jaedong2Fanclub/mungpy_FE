@@ -35,6 +35,7 @@ const Btn = styled.button<ButtonProps>`
             height : 68px;
             border-radius : 10px;
             font-weight: 900;
+            margin-bottom: 2rem;
         `
     }
     ${props =>
@@ -95,9 +96,16 @@ const Btn = styled.button<ButtonProps>`
             margin-left: 2rem;
         `
     }
-    
-    & :hover{
-        background : ${Color.hover}
+    ${props =>
+        props.variant === 'animationBtn' &&
+        css`
+            background-color : transparent;
+            font-size : ${fontSize.logoTitle};
+            width : 200px;
+            height : 56px;
+            border-radius : 10px;
+            font-weight: 900;
+        `
     }
 `
 

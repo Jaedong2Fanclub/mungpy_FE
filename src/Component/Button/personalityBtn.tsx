@@ -7,8 +7,8 @@ import { ButtonGroupProps } from "../../constants/interface";
 const ButtonContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    width: 50%;
+    justify-content: space-evenly;
+    margin-bottom: 0.5rem;
 `;
 
 const Button1 = styled.button<{ selected: boolean }>`

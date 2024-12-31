@@ -1,4 +1,4 @@
-import DetailResult from "../Component/Result/detailResult"
+import DetailResult from "../component/Result/detailResult"
 
 const DetailPage = () => {
     return (

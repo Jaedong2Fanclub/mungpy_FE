@@ -1,10 +1,10 @@
 import React from "react";
-import Main3 from "../Component/Main/main3";
+import Personality from "../component/Main/personality";
 
 const PersonalityPage = () => {
     return (
         <>
-            <Main3/>
+            <Personality/>
         </>
     )
 }

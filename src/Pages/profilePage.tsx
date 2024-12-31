@@ -1,10 +1,9 @@
-import React from "react";
-import Main2 from "../Component/Main/main2";
+import Profile from "../component/Main/userUploadImg";
 
 const ProfileUploadPage = () => {
     return (
         <>
-            <Main2/>
+            <Profile/>
         </>
     )
 }

@@ -1,24 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import logo from '../../img/sfzLogo.png'
+import HambugerBar from "./hambugerBar";
 
 const Box = styled.div`
-    width: 100%;
-    height: 60px;
+    width: 390px;
+    height: 75px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-`
-const Img = styled.img`
-    width : 150px;
-    height : 150px;
+    justify-content: center;
+    background-color: #FEF7FF;
 `
 
 const Header = () => {
     return (
         <Box>
-            <Img src={logo}/>
-            <span>로그인</span>
+            <p>멍피</p>
+            <HambugerBar/>
         </Box>
     )
 }

@@ -21,13 +21,21 @@ export const Box = styled.div`
     margin: 20px auto;
     text-align: center;
     align-items: center;
+    justify-content: center;
+    @media (max-width: 768px) {
+        width: 90%;
+        height: 100%;
+        padding: 10px;
+        padding-left: 0;
+    }
 `
 
 export const P = styled.p`
     font-size : ${fontSize.title};
     margin-top : 200px;
-    margin-left : 73px;
     font-weight: 900;
+    text-align: center;
+    align-items: center;
 `
 
 export const SubDiv = styled.div`
