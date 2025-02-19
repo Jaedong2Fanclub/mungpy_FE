@@ -3,6 +3,7 @@ import ShelterRegister1 from "./shlterRegister1";
 import ShelterRegister2 from "./shelterRegister2";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import Header from "../Header/header";
 
 const ShelterRegister = () => {
   const [registerData, setRegisterData] = useState({
@@ -54,13 +55,20 @@ const ShelterRegister = () => {
   };
 
   return (
-    <div>
-      {location.pathname === "/shelterRegister" && (
-        <ShelterRegister1 onNext={handleNext} />
-      )}
-      {location.pathname === "/shelterRegister/2" && (
-        <ShelterRegister2 onSubmit={handleSubmit} />
-      )}
+    <div style={{width: "390px"}}>
+      {/* <Header/> */}
+      <div style={{display: 'flex', justifyContent: 'center', marginTop: '1rem', fontWeight: '700'}}>
+        유기견/묘 등록
+      </div>
+      <hr/>
+      <div>
+        {location.pathname === "/shelterRegister" && (
+          <ShelterRegister1 onNext={handleNext} />
+        )}
+        {location.pathname === "/shelterRegister/2" && (
+          <ShelterRegister2 onSubmit={handleSubmit} />
+        )}
+      </div>
     </div>
   )
 }

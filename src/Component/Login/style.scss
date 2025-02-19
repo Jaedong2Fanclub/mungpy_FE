@@ -1,0 +1,14 @@
+.flex-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  
+  .flex-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #C3C3C3;
+  }
+  p{
+    margin-bottom: 1rem;
+  }
+}

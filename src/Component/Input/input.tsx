@@ -1,17 +1,43 @@
-import styled from "styled-components";
-import React, { forwardRef, Ref } from "react";
-import { InputProps } from '../../constants/interface';
+import React, { CSSProperties, forwardRef } from "react";
+import "./inputStyle.scss";
 
-const InputBox = styled.input<InputProps>`
-    padding: 0.5rem;
-    border: 1px solid #000000; /* 입력 필드의 테두리를 설정 */
-    border-radius: 0.3rem; 
-    margin-top : 0.5rem;
-    width: ${(props) => (props.size === 'large' ? '100%' : props.size === 'small' ? '150px' : '200px')};
-`;
+interface InputProps {
+    showTitle?: boolean;
+    title?: string;
+    type: string;
+    placeholder: string;
+    style?: CSSProperties;
+    value?: any;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur ?: (event: React.FocusEvent<HTMLInputElement>) => void;
+    ref ?: React.Ref<HTMLInputElement>;
+    name ?: string;
+    className?: string;
+}
 
-const Input = forwardRef<HTMLInputElement, InputProps>(({ placeholder, type, size, ...rest }, ref) => {
-    return <InputBox ref={ref} placeholder={placeholder} type={type} size={size} {...rest} />
-});
+const Input = forwardRef<HTMLInputElement,InputProps> (
+    ({ title = '', type, placeholder, style, value, onChange, onBlur, name, className }, ref) => {
+        return (
+            <div className="input-container" style={style}>
+                {title && (
+                    <h2>
+                        {title}
+                        <span className="required">*</span>
+                    </h2>
+                )}
+                <input
+                    type={type}
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    ref={ref}
+                    name={name}
+                    className={className}
+                />
+            </div>
+        );
+    }
+);
 
 export default Input; 

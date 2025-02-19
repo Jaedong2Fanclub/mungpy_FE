@@ -21,8 +21,8 @@ const getItems = (
     {id : "0", text: username ? `${username}님` : '로그인해주세요', onClick: () => navigate(username ? "" : '/login')},
     { id: "1", text: "홈", onClick: () => navigate("/home")},
     { id: "2", text: "등록된 동물", onClick: () => navigate("/animalSearch")},
-    { id: "3", text: "유기견/묘 등록", onClick: () => navigate("/animalRegister") },
-    { id: "4", text: "보호소 리스트", onClick: () => navigate("/shelterRegister")},
+    { id: "3", text: "유기견/묘 등록", onClick: () => navigate("/shelterRegister") },
+    { id: "4", text: "보호소 리스트", onClick: () => navigate("/shelterSearch")},
     { id: "5", text: "커뮤니티", onClick: () => navigate("/community")},
   ...(username
     ? [{ id : "6", text: "마이페이지", onClick: () => navigate("/myPage")},

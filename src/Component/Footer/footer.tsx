@@ -38,9 +38,6 @@ const Footer = () => {
                 </button>
                 </div>
             </section>
-            <section>
-                <MapSelector onSelect={handleMapSelection}/>
-            </section>
         </FooterStyle>
     )
 }

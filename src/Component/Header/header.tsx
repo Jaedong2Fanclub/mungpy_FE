@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-import logo from '../../img/sfzLogo.png'
 import HambugerBar from "./hambugerBar";
+import { useNavigate } from "react-router-dom";
 
 const Box = styled.div`
     width: 390px;
@@ -11,11 +10,21 @@ const Box = styled.div`
     justify-content: center;
     background-color: #FEF7FF;
 `
+const P = styled.p`
+    color : #3F3F3F;
+    font-size: 18px;
+    font-weight : 800;
+    cursor : pointer;
+    pointer-events: auto;
+    z-index: 2;
+    margin: 0;
+`
 
 const Header = () => {
+    const navigate = useNavigate();
     return (
         <Box>
-            <p>멍피</p>
+            <P onClick={() => navigate('/home')}>MUNGPY</P>
             <HambugerBar/>
         </Box>
     )

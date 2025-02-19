@@ -1,0 +1,35 @@
+p {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+}
+
+.location-selector {
+
+  .field-wrapper {
+    margin-bottom: 20px;
+
+    .custom-select {
+      .react-select__control {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: none;
+        padding: 5px;
+
+        &:hover {
+          border-color: #888;
+        }
+      }
+
+      .react-select__menu {
+        border-radius: 10px;
+      }
+
+      .react-select__option {
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+  }
+}

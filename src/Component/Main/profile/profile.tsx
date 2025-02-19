@@ -1,6 +1,7 @@
 import React, { ChangeEvent, forwardRef, useRef, useState } from 'react';
 import { ProfileImgUploadProps } from '../../../constants/interface';
 import { ProfileUploadWrapper, ProfiledUpload, Span } from './profileStyle';
+import ProfileImg from "../../../img/profileImg.png"
 
 const ProfileImgUpload = forwardRef<HTMLInputElement, ProfileImgUploadProps>(
     ({ onChange, onBlur, onImageLoad }, ref) => {
@@ -27,7 +28,7 @@ const ProfileImgUpload = forwardRef<HTMLInputElement, ProfileImgUploadProps>(
                 {imageUrl ? (
                     <img src={imageUrl} alt="Profile Preview" />
                 ) : (
-                    <Span>+</Span>
+                    <img src={ProfileImg}/>
                 )}
             </ProfiledUpload>
             <input

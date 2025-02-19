@@ -8,12 +8,14 @@ import { useNavigate } from "react-router-dom";
 import * as E  from "../../constants/formRequitements"
 import { useDispatch } from "react-redux";
 import { SET_TOKEN } from "../../reducer/tokenSlice";
+import "./style.scss"
+import Button from "../Button/button";
 
 const Error = styled.p`
     color: #FF0001;
     font-size: 8px;
-    margin-top : 0.5rem;
     margin-bottom : 0.5rem;
+    padding-left : 0.5rem;
 `;
 
 const PasswordStrength = styled.p<{ color: string }>`
@@ -25,17 +27,20 @@ const PasswordStrength = styled.p<{ color: string }>`
 
 
 const ToggleSwitch = styled.label`
-position: relative;
-display: inline-block;
-width: 47.7px;
-height: 23.33px;
+  position: relative;
+  display: inline-block;
+  width: 47.7px;
+  height: 23.33px;
+  top: -40px;
 `
 
 const ToggleLabels = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  gap: 20px;
+  gap: 100px;
   margin-bottom: 20px;
+  margin-top: 20px;
 `;
 
 const Label = styled.span<{ isActive: boolean }>`
@@ -157,57 +162,64 @@ const Login = () => {
   }
 
   function handleShelter() {
-    navigate('/shelterRegister');
+    navigate('/join');
   }
 
   return (
-    <div>
-    <ToggleLabels>
-        <Label isActive={!isActive}>일반 회원</Label>
-        <Label isActive={isActive}>보호소 회원</Label>
-      </ToggleLabels>
-    <ToggleSwitch>
-      <CheckBox
-      type='checkbox'
-      checked={isActive}
-      onChange={() => setIsActive(!isActive)}
-      />
-      <ToggleSlider/>
-    </ToggleSwitch>
-    <div>
-      {isActive ? (
-        <form onSubmit={handleSubmit(onSubmitHandler)}>
-        <div>
-          <Input
-          type="text"
-            placehloder="아이디 입력"
-            {...register("id", {
-              required: E.idValidation.require,
-              maxLength : E.idValidation.maxLength
-            })}
-          />
-          {errors.id && <Error>{errors.id.message}</Error>}
-          <Input
-          type="password"
-          placeholder="비밀번호 입력"
-          {...register("password", {required: '비밀번호를 입력하세요',validate: validatePassword})}
-          />
-          {errors.password && <Error>{errors.password.message}</Error>}
-          {!errors.password && passwordError && <PasswordStrength color={passwordColor}>{passwordError}</PasswordStrength>}
-          <button>로그인</button>
+    <div style={{display: "flex", justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+      <h1 style={{color: '#FF7920', fontWeight: '900'}}>MUNGPY</h1>
+      <ToggleLabels>
+          <Label isActive={!isActive}>일반 회원</Label>
+          <Label isActive={isActive}>보호소 회원</Label>
+        </ToggleLabels>
+      <ToggleSwitch>
+        <CheckBox
+        type='checkbox'
+        checked={isActive}
+        onChange={() => setIsActive(!isActive)}
+        />
+        <ToggleSlider/>
+      </ToggleSwitch>
+      <div>
+        {isActive ? (
+          <form onSubmit={handleSubmit(onSubmitHandler)}>
           <div>
-            <p onClick={handleShelter}>보호소 등록</p>
-            <p onClick={handleIdSearch}>아이디 찾기</p>
-            <p onClick={handlePasswordSearch}>비밀번호 찾기</p>
+            <Input
+            type="text"
+              placeholder="아이디 입력"
+              {...register("id", {
+                required: E.idValidation.require,
+                maxLength : E.idValidation.maxLength
+              })}
+            />
+            {errors.id && <Error>{errors.id.message}</Error>}
+            <Input
+            type="password"
+            placeholder="비밀번호 입력"
+            {...register("password", {required: '비밀번호를 입력하세요',validate: validatePassword})}
+            />
+            {errors.password && <Error>{errors.password.message}</Error>}
+            {!errors.password && passwordError && <PasswordStrength color={passwordColor}>{passwordError}</PasswordStrength>}
+            <Button type="submit" variant="submit">로그인</Button>
+            <div style={{display: "flex", justifyContent: 'space-between', fontSize: 'small', color : '#838383'}}>
+              <p onClick={handleShelter}>보호소 등록 {'>'}</p>
+              <div style={{display: 'flex', gap: '20px'}}>
+                <p onClick={handleIdSearch}>아이디 찾기</p>
+                <p onClick={handlePasswordSearch}>비밀번호 찾기</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </form>
-      ): (
-        <div>
-          <p>SNS 계정으로 로그인</p>
-          <img src={KakaoLogin}/>
-        </div>
-      )}
+        </form>
+        ): (
+          <div>
+            <div className="flex-container">
+              <div className="flex-line"></div>
+              <p>SNS 계정으로 로그인</p>
+              <div className="flex-line"></div>
+            </div>
+            <img src={KakaoLogin}/>
+          </div>
+        )}
       </div>
     </div>
   )

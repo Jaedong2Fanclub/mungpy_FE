@@ -1,10 +1,11 @@
 import React from "react";
 import Personality from "../component/Main/personality";
+import TraitSelector from "../component/Main/traitSelector";
 
 const PersonalityPage = () => {
     return (
         <>
-            <Personality/>
+            {/* <TraitSelector/> */}
         </>
     )
 }

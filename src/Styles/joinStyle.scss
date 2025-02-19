@@ -1,0 +1,30 @@
+.join-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .header-box {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  header {
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .line {
+    width: 100%;
+    flex-grow: 1;
+    height: 1px;
+    background-color: #D0D0D0;
+    margin: 1rem 0 1.5rem 0;
+  }
+}
+
+.back-icon {
+  position: absolute;
+    left: 20px;
+    color: #D0D0D0;
+    font-size: 24px; // 아이콘 사이즈 조정
+    cursor: pointer;
+    margin-right: 10px; // 텍스트와의 간격 조정
+}

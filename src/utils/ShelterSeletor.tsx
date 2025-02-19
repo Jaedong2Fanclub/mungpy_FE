@@ -2,8 +2,14 @@ import React from "react";
 import Select from "react-select";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import { setShelter } from "../action/shelterAction";
+import { customStyles } from "./selectStyle";
 
-const ShelterSelector = ({ onSelect }: { onSelect: (shelter: string) => void }) => {
+interface Props {
+  onSelect: (shelter: string) => void;
+  title?: string;
+}
+
+const ShelterSelector: React.FC<Props> = ({onSelect, title}) => {
   const dispatch = useAppDispatch();
   const shelters = useAppSelector((state) => state.shelter.shelters);
 
@@ -21,13 +27,19 @@ const ShelterSelector = ({ onSelect }: { onSelect: (shelter: string) => void }) 
   };
 
   return (
-    <div>
-      <p>보호소</p>
+    <div style={{marginTop: '1rem'}}>
+      {title && (
+        <p style={{fontSize: '14px', fontWeight: '600'}}>
+          {title}
+          <span style={{color: 'red'}}>*</span>
+        </p>
+      )}
       <Select
         id="shelter-select"
         options={shelterOptions}
         onChange={handleSelect}
         placeholder="모든 보호소"
+        styles={customStyles}
       />
     </div>
   );

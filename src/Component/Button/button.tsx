@@ -18,24 +18,27 @@ const Btn = styled.button<ButtonProps>`
     ${props =>
         props.variant === 'submitBtn' &&
         css`
-            background: ${Color.hover};
-            font-size : ${fontSize.title};
-            width : 200px;
-            height : 56px;
-            border-radius : 10px;
-            font-weight: 900;
+            background: ${Color.btnColor};
+            font-size : ${fontSize.mid};
+            width : 315px;
+            height : 57px;
+            border-radius : 100px;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color : ${Color.main};
         `
     }
     ${props =>
         props.variant === 'NextBtn' &&
         css`
-            background: ${Color.hover};
-            font-size : ${fontSize.title};
-            width : 340px;
-            height : 68px;
-            border-radius : 10px;
-            font-weight: 900;
+            background: ${Color.main};
+            font-size : ${fontSize.mid};
+            width : 90%;
+            height : 57px;
+            border-radius : 100px;
+            font-weight: 700;
             margin-bottom: 2rem;
+            color : ${Color.btnColor};
         `
     }
     ${props =>
@@ -80,20 +83,14 @@ const Btn = styled.button<ButtonProps>`
     ${props =>
         props.variant === 'submit' &&
         css`
-            display: flex;
-            border: none;
-            color: #ffffff;
-            align-items: center;
-            border-radius: 5px;
-            cursor: pointer;
-            background: #525CEB;
-            font-size: 25px;
-            width: 550px;
-            height: 56px;
-            border-radius: 10px;
-            font-weight: 900;
-            justify-content: center;
-            margin-left: 2rem;
+            background: ${Color.main};
+            font-size : ${fontSize.small};
+            width : 100%;
+            height : 60px;
+            border-radius : 12px;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color : white;
         `
     }
     ${props =>
@@ -107,9 +104,33 @@ const Btn = styled.button<ButtonProps>`
             font-weight: 900;
         `
     }
+    ${props =>
+        props.variant === 'filled' &&
+        css`
+            width: 167px;
+            height: 57px;
+            background-color: #ff7920; // 주황색
+            color: white;
+            border: none;
+            border-radius: 100px;
+            font-weight: 700;
+        `
+    }
+    ${props =>
+        props.variant === 'outlined' &&
+        css`
+            width: 167px;
+            height: 57px;
+            background-color: white;
+            color: #ff7920;
+            border: 2px solid #ff7920;
+            border-radius: 100px;
+            font-weight: 700;
+        `
+    }
 `
 
-const Button: FC<ButtonProps> = ({onClick, children, type = "button",variant, ...props}) => {
+const Button: FC<ButtonProps> = ({onClick, children, type ,variant, ...props}) => {
     return (
         <>
             <Btn type={type} onClick={onClick} variant={variant} {...props}>

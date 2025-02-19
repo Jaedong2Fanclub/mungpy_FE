@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {Main2_Container, Main2_P, SubLabel} from './mainStyle';
+import {Main2_Container, Main2_P, SubLabel} from './mungpy/mainStyle';
 import Button from "../Button/button";
 import ButtonGroup from "../Button/personalityBtn";
 

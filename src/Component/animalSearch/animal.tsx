@@ -1,95 +1,10 @@
 import { useEffect, useState } from "react";
 import Header from "../Header/header";
 import Search from "../Search/search";
-import styled from "styled-components";
 import axios from "axios";
-import data from '../../mock/list.json';
 import PostItem from "../List/findAnimalList";
-
-const ResultContainer = styled.div`
-  margin-top: 20px;
-`;
-
-const Badge = styled.div`
-  display: inline-block;
-  padding: 5px 10px;
-  background-color: #ff8c00;
-  color: white;
-  border-radius: 20px;
-  margin-right: 10px;
-  font-size: 14px;
-`;
-
-const ResetButton = styled.button`
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #ff6a00;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    background-color: #cc5800;
-  }
-`;
-
-const SwipeContainer = styled.div<{ isOpen : boolean}>`
-position: fixed;
-bottom: ${(props) => (props.isOpen ? "0" : "-100%")};
-left: 0;
-width: 100%;
-height: 50%;
-background-color: white;
-box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-transition: bottom 0.3s ease-in-out;
-z-index: 1000;
-`
-
-const ToggleBtn = styled.button`
-padding: 10px 20px;
-font-size: 16px;
-background-color: #007bff;
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-z-index: 5000;
-
-&:hover {
-  background-color: #0056b3;
-}
-`
-
-// 닫기 버튼 스타일
-const CloseButton = styled.button`
-  padding: 10px 20px;
-  font-size: 14px;
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #a71d2a;
-  }
-`;
-
-// 내용 스타일
-const Content = styled.div`
-  padding: 20px;
-`;
-
-const Overlay = styled.div<{ isOpen: boolean }>`
-  display: ${(props) => (props.isOpen ? "block" : "none")};
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-`;
+import {HiChevronDown} from 'react-icons/hi2';
+import './style.scss';
 
 const AnimalSearch = ({text} : {text:string}) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,106 +13,159 @@ const AnimalSearch = ({text} : {text:string}) => {
     location: string;
     shelter: string;
     gender: string;
-  }>({ location: "", shelter: "", gender: "모두" });
+    animalType: string;
+    breedType: string;
+  }>({ location: "지역", shelter: "보호소", gender: "성별", animalType: "동물", breedType : '품종'});
 
   const [allAnimals, setAllAnimals] = useState<any[]>([]);
-  const [filteredAnimals, setFilterAnimals] = useState<any[]>([]);
+  const [filteredAnimals, setFilteredAnimals] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchAnimals = async() => {
+      try {
+        let apiUrl = "/api/animals";
+        if(text === "보호소 정보 조회") {
+          apiUrl = "api/shelters";
+        }
+        const res = await axios.get(apiUrl);
+        setAllAnimals(res.data);
+        setFilteredAnimals(res.data);
+      } catch (error) {
+        console.log("animal search error : ", error);
+      }
+    };
+    
+    fetchAnimals();
+  },[text])
 
   const handleOpen = () => {
-    setIsOpen((prev) => !prev);
+    setIsOpen(true);
   }
 
   const closeOnOverlayClick = () => {
     setIsOpen(false);
   };
 
-  const handleSearch = (data: { location: string; shelter: string; gender: string }) => {
+  const handleSearch = (data:any) => {
+    if(text === "보호소 정보 조회") {
+      data = {...data, shelter: "", gender: "", animalType: "", breedType: "" };
+    }
     setSearchData(data); // 검색 데이터 저장
     setIsSearchComplete(true); // 검색 완료 상태 전환
+    fetchFilteredData(data);
+  };
 
-    //필터링 로직
-    const filtered = allAnimals.filter((animal) => {
-      const matchesLocation = !data.location || animal.location.includes(data.location);
-      const matchesShelter = !data.shelter || animal.shelter.includes(data.shelter);
-      const matchesGender = data.gender === "모두" || animal.gender === data.gender;
-      return matchesLocation && matchesShelter && matchesGender;
-    })
+  const fetchFilteredData = async (data:any) => {
+    const params = new URLSearchParams({
+      upperRegion: data.location || '',
+      lowerRegion: '',
+      shelterName: data.shelter || '',
+      animalType: data.animalType || '',
+      breedType: data.breedType || '',
+      gender: data.gender || ''
+    }).toString();
 
-    setFilterAnimals(filtered);
+    try {
+      const response = await axios.get(`/api/animals?${params}`);
+      setFilteredAnimals(response.data);
+    } catch (error) {
+      console.error("Filtered search error:", error);
+    }
   };
 
   const handleReset = () => {
     setIsSearchComplete(false); // 초기화
-    setSearchData({ location: "", shelter: "", gender: "모두" });
-    setFilterAnimals(allAnimals);
+    setSearchData({ location: "지역", shelter: "보호소", gender: "성별", animalType: "동물", breedType: "품종"});
+    setFilteredAnimals(allAnimals);
   };
-
-  useEffect(() => {
-    const fetchAnimals = async() => {
-      try {
-        const res = await axios.get("/api호출url");
-        setAllAnimals(res.data);
-        setFilterAnimals(res.data);
-      } catch (error) {
-        console.log("animal search error : ", error);
-      }
-    };
-    fetchAnimals();
-  })
-
-  useEffect(()=> {
-    setAllAnimals(data);
-    setFilterAnimals(data);
-  })
 
   return (
     <div>
-      {/* <Header/> */}
-      <p>{text}</p>
+      <Header/>
+      <p className="search-title">{text}</p>
       {!isSearchComplete ? (
         <>
         <div>
-        <button onClick={handleOpen}>
-            <ResultContainer>
-              <Badge>{searchData.location || "지역"}</Badge>
-              <Badge>{searchData.shelter || "보호소"}</Badge>
-              <Badge>
-                {searchData.gender === "모두"
-                  ? "모두"
-                  : searchData.gender === "female"
-                  ? "여자"
-                  : "남자"}
-              </Badge>
-            </ResultContainer>
-        </button>
-        <Overlay isOpen={isOpen} onClick={closeOnOverlayClick} />
-        <SwipeContainer isOpen={isOpen}>
-          <Content>
-            <Search onSearch={handleSearch} title={text}/>
-          </Content>
-        </SwipeContainer>
+          <div className="search-button-container-wrapper">
+            <button 
+            className="search-button-container"
+            onClick={handleOpen}
+            >
+              <div className="result-container">
+                <div  className={isSearchComplete ? "badge complete" : "badge"}>{searchData.location || "지역"}<HiChevronDown/></div>
+                {text !== "보호소 정보 조회" && (
+                  <>
+                    <div className={isSearchComplete ? "badge complete" : "badge"}>{searchData.shelter || "보호소"}<HiChevronDown/></div>
+                    <div className={isSearchComplete ? "badge complete" : "badge"}>
+                      {searchData.animalType === "동물" || !searchData.animalType
+                        ? "동물"
+                        : searchData.animalType === "DOG"
+                        ? "강아지"
+                        : "고양이"
+                      }
+                      <HiChevronDown/>
+                    </div>
+                    <div className={isSearchComplete ? "badge complete" : "badge"}>{searchData.breedType || '품종'}<HiChevronDown/></div>
+                    <div className={isSearchComplete ? "badge complete" : "badge"}>
+                      {searchData.gender === "성별" || !searchData.gender
+                        ? "성별"
+                        : searchData.gender === "FEMALE"
+                        ? "여자"
+                        : "남자"
+                      }
+                      <HiChevronDown/>
+                    </div>
+                  </>
+                )}
+              </div>
+            </button>
+          </div>
+          <hr/>
+          <div className={`overlay ${isOpen ? "visible" : ""}`} onClick={closeOnOverlayClick}>
+            <div 
+              className={`swipe-container ${isOpen ? "open" : ""}`}
+              onClick={(e) => e.stopPropagation()}
+            >
+                <Search onSearch={handleSearch} title={text}/>
+            </div>
+          </div>
+          <PostItem data={allAnimals}/>
         </div>
-        <PostItem data={allAnimals}/>
         </>
       ) : (
         <>
-          <ResultContainer>
-            <div>
-              <ResetButton onClick={handleReset}>⟳</ResetButton>
-              <Badge>{searchData.location || "모든 지역"}</Badge>
-              <Badge>{searchData.shelter || "모든 보호소"}</Badge>
-              <Badge>
-                {searchData.gender === "모두"
-                  ? "모두"
-                  : searchData.gender === "female"
-                  ? "여자"
-                  : "남자"}
-              </Badge>
+          <div className="result-container-wrapper">
+            <div className="result-container">
+              <button className="reset-button" onClick={handleReset}>⟳</button>
+              <div className={isSearchComplete ? "badge complete" : "badge"}>{searchData.location || "모든 지역"}<HiChevronDown/></div>
+              { text !== "보호소 정보 조회" && (
+                <>
+                  <div className={isSearchComplete ? "badge complete" : "badge"}>{searchData.shelter || "모든 보호소"}<HiChevronDown/></div>
+                  <div className={isSearchComplete ? "badge complete" : "badge"}>
+                    {searchData.animalType === "OTHER" || !searchData.animalType
+                      ? "모두"
+                      : searchData.animalType === "DOG"
+                      ? "강아지"
+                      : "고양이"
+                    }
+                    <HiChevronDown/>
+                  </div>
+                  <div className={isSearchComplete ? "badge complete" : "badge"}>{searchData.breedType || '품종'}<HiChevronDown/></div>
+                  <div className={isSearchComplete ? "badge complete" : "badge"}>
+                    {searchData.gender === "성별" || !searchData.gender
+                      ? "모두"
+                      : searchData.gender === "FEMALE"
+                      ? "여자"
+                      : "남자"}
+                    <HiChevronDown/>
+                  </div>
+                  </>
+              )}
             </div>
-          </ResultContainer>
-          <div>
-             <PostItem data={filteredAnimals}/>
           </div>
+        <div>
+            <PostItem data={filteredAnimals}/>
+        </div>
         </>
       )}
     </div>

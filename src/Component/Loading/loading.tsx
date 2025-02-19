@@ -1,42 +1,50 @@
-import React, { useEffect, useState } from "react";
-import * as L from './loadingStyle'
+import React, { useEffect, useRef, useState } from "react";
+import './loadingStyle.scss';
 import { useNavigate, useParams } from "react-router-dom";
+import { HiDotsHorizontal } from "react-icons/hi";
+import dogFoot from "./dogfoot.json";
+import {Player} from '@lottiefiles/react-lottie-player';
 
 const Loading = () => {
-    const [loading, setLoading] = useState(true);
-    const [success, setSuccess] = useState(true);
-    const navigate = useNavigate();
+    const [loading, setLoading]  = useState(false);
+    const playerRef = useRef<Player | null>(null);
 
+    // 컴포넌트가 마운트되면 loading을 true로 변경
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-            setSuccess(true);
-            setTimeout(() => {
-                // navigate(`/result/${id}`); // Replace with your target route
-            }, 1000); // Delay for showing the success state before navigation
-        }, 10000);
-
-        return () => clearTimeout(timer);
-    },[navigate]);
+      setLoading(true);
+  
+      if (playerRef.current) {
+        playerRef.current.play(); // 애니메이션 실행
+      }
+  
+      return () => {
+        setLoading(false);
+        if (playerRef.current) {
+          playerRef.current.stop(); // 언마운트 시 애니메이션 정지
+        }
+      };
+    }, []);
 
     return (
-        <>
-        <L.Box>
-            <L.P>사용자님과 닮은 유기견을</L.P>
-            <L.SubDiv>찾는 중입니다 <L.Img src="/image/smail.png"/></L.SubDiv>
-            <L.Circle success={success}>
-                {loading ? (
-                    <L.LoadingDots>
-                        <L.Dot style={{ animationDelay: '0s' }} />
-                        <L.Dot style={{ animationDelay: '0.2s' }} />
-                        <L.Dot style={{ animationDelay: '0.4s' }} />
-                    </L.LoadingDots>
-                ) : (
-                    <L.CheckIcon />
+        <div className="loading-container">
+            <div>
+                {loading && (
+                    <>
+                        <div>
+                            <p className="loading-text">사용자님과 닮은 반려견을</p>
+                            <p className="loading-subtext">찾고 있어요<span><HiDotsHorizontal/></span></p>
+                        </div>
+                        <Player
+                            ref={playerRef}
+                            src={dogFoot}
+                            style={{ height: "300px", width: "300px"}}
+                            loop
+                            autoplay={true}
+                        />
+                    </>
                 )}
-            </L.Circle>
-        </L.Box>
-        </>
+            </div>
+        </div>
     )
 }
 

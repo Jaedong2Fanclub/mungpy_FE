@@ -1,13 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MapSelector from "../../utils/MapSelector";
 import SelectionBar from "../Button/selectionBar";
 import ShelterSelector from "../../utils/ShelterSeletor";
-
-const genderList = [
-  { id: "gender1", name: "모두", value: "all" },
-  { id: "gender2", name: "여자", value: "female" },
-  { id: "gender3", name: "남자", value: "male" },
-];
+import AnimalDropdown from "../dropdown/animalDropdown";
+import BreedSelector from "../dropdown/breedDropdown";
+import './style.scss';
 
 const Search = ({
   title,
@@ -18,52 +15,70 @@ const Search = ({
     location: string;
     shelter: string;
     gender: string;
+    animalType: string;
+    breedType: string;
   }) => void;
 }) => {
-  const [selectedLocation, setSelectedLocation] = useState("");
-  const [selectedShelter, setSelectedShelter] = useState("");
-  const [selectedGender, setSelectedGender] = useState("");
+  const [formData, setFormData] = useState({
+    location: "",
+    shelter: "",
+    gender: "",
+    animalType: "",
+    breedType: ""
+  })
 
-  const handleMapSelection = (sido: string, sigugun: string) => {
-    const address = `${sido} ${sigugun}`;
-    setSelectedLocation(address);
-    console.log(sido, sigugun);
+  const genderList = [
+    { id: "gender1", name: "모두", value: "" },
+    { id: "gender2", name: "여자", value: "FEMALE" },
+    { id: "gender3", name: "남자", value: "MALE" },
+  ];
+
+  const isShelterSearch = title === "보호소 정보 조회";
+
+  const handleChange = (filed: string, value: string) => {
+    setFormData((prev) => ({...prev, [filed]: value}));
   };
 
-  const handleShelterSelection = (shelterName: string) => {
-    const name = `${shelterName}`
-    setSelectedShelter(name);
-    console.log(name);
-  }
-
-  const handleGenderSelectoin = (gender: string) => {
-    setSelectedGender(gender);
-    console.log("gender : ", gender);
-  }
-
   const handleSearch = () => {
-    onSearch({
-      location : selectedLocation,
-      shelter : selectedShelter,
-      gender : selectedGender
-    });
-    // api 호출 로직짜기
-    // setResult("yahoooooo~");
-    // setIsSearchComplete(true);
+    const searchData = isShelterSearch
+    ? { location: formData.location, shelter: "", gender: "", animalType: "", breedType: ""}
+    : {...formData}
+    onSearch(searchData);
   }
+  useEffect(() => {
+    console.log("Form Data Updated:", formData);
+  }, [formData]);
+  
 
   return(
-    <div>
-      {title}
-          <MapSelector onSelect={handleMapSelection}/>
-          <ShelterSelector onSelect={handleShelterSelection}/>
-          <SelectionBar 
-          list={genderList}
-          selectedValue="all"
-          onSelect={handleGenderSelectoin}
-          name="gender"
-          />
-          <button onClick={handleSearch}>검색하기</button>
+    <div className="search-container">
+      <h4>{title}</h4>
+      <hr/>
+      <div style={{marginBottom: '1rem'}}>
+        <MapSelector onSelect={(sido, sigugun) => handleChange("location", `${sido} ${sigugun}`)}/>
+        {!isShelterSearch && (
+          <>
+            <p style={{marginTop: '1rem'}}>보호소</p>
+            <ShelterSelector onSelect={(shelter) => handleChange("shelter", shelter)}/>
+            <AnimalDropdown setAnimalType={(type) => handleChange("animalType", type)}/>
+            <p style={{marginTop: '1rem'}}>품종</p>
+            <BreedSelector 
+              animalType={formData.animalType} 
+              onBreedSelect={(breed) => handleChange("breedType", breed)}
+            />
+            <div style={{marginTop: '1rem'}}>
+              <p>성별</p>
+            </div>
+            <SelectionBar 
+            list={genderList}
+            selectedValue={formData.gender}
+            onSelect={(gender) => handleChange("gender", gender)}
+            name="gender"
+            />
+          </>
+        )}
+      </div>
+      <button className="search-button" onClick={handleSearch}>검색하기</button>
     </div>
   )
 }

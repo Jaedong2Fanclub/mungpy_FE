@@ -12,25 +12,25 @@ interface DropdownProps {
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
-    const [selected, setSelected] = useState('선택해주세요');
+    const [selected, setSelected] = useState<string>('선택해주세요');
 
-    const handleSelect = (key: string,value: string) => {
-    setSelected(value);
-    onSelect(key,value);
+    const handleSelect = (key: string, value: string) => {
+        setSelected(value);
+        onSelect(key, value);
     };
 
     return (
         <DropdownContainer>
-        <DropdownButton>{selected}</DropdownButton>
-        <DropdownContent>
-            {options.map((option, index) => {
-                const [key, value] = Object.entries(option)[0];
-                return (
-                <DropdownItem key={index} onClick={() => handleSelect(key, value)}>
-                    {key}
-                </DropdownItem>
-                );
-            })}
+            <DropdownButton>{selected}</DropdownButton>
+            <DropdownContent>
+                {options.map((option, index) => {
+                    const [key, value] = Object.entries(option)[0];
+                    return (
+                        <DropdownItem key={index} onClick={() => handleSelect(key, value)}>
+                            {value}
+                        </DropdownItem>
+                    );
+                })}
             </DropdownContent>
         </DropdownContainer>
     );

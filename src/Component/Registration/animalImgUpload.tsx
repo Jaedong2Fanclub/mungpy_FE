@@ -1,79 +1,7 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import Camera from "../../img/camera.png"
 import { UploadedImage } from "../../constants/interface";
-
-const Title = styled.p`
-  font-weight: bold;
-  margin-bottom: 8px;
-`;
-
-const UploadArea = styled.div`
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-`;
-
-const UploadButton = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  border: 1px dashed #ccc;
-  border-radius: 8px;
-  cursor: pointer;
-`;
-
-const Icon = styled.div`
-  font-size: 24px;
-`;
-
-const Counter = styled.div`
-  margin-top: 5px;
-  font-size: 14px;
-  color: #666;
-`;
-
-const ImagePreview = styled.div`
-  position: relative;
-  width: 100px;
-  height: 100px;
-  border-radius: 8px;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-const DeleteButton = styled.button`
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-`;
-
-const Tag = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #ff8c00;
-  color: white;
-  font-size: 12px;
-  text-align: center;
-  padding: 2px 0;
-`;
+import { Title, UploadArea, UploadButton, ImagePreview, DeleteButton, Tag } from "./imageUploadStyle";
 
 const MAX_IMAGE = 5;
 
@@ -89,7 +17,7 @@ const AnimalImgUpload = ({
             return;
         const files = Array.from(e.target.files);
         const newImages = files.map((file) => ({
-            id: URL.createObjectURL(file),
+            id: crypto.randomUUID(), // 고유 아이디 생성
             url: URL.createObjectURL(file),
         }));
 
@@ -103,39 +31,42 @@ const AnimalImgUpload = ({
     }
 
     const handleRemoveImage = (id: string) => {
-        const updatedImages = images.filter((image) => image.id !== id);
-        setImages(updatedImages);
-        onUpload(updatedImages);
+      console.log("Attempting to remove image with ID:", id);
+      const updatedImages = images.filter((image) => image.id !== id);
+      console.log(updatedImages);
+      setImages(updatedImages);
+      onUpload(updatedImages);
     }
+
     return (
-        <div>
-            <Title>보호 사진</Title>
-            <UploadArea>
-                {images.length < MAX_IMAGE && (
-                    <UploadButton>
-                        <label htmlFor="image-upload">
-                            <img src={Camera}/>
-                            <span>{`${images.length}/${MAX_IMAGE}`}</span>
-                        </label>
-                        <input
-                        id="image-upload"
-                        type="file"
-                        accept="image/*"
-                        multiple
-                        onChange={handleImageUpload}
-                        style={{display: "none"}}
-                        />
-                    </UploadButton>
-                )}
-                    {images.map((image, index) => (
-                        <ImagePreview key={image.id}>
-                            <img src={image.url}/>
-                            <DeleteButton onClick={() => handleRemoveImage(image.id)}>x</DeleteButton>
-                            <Tag>{index === 0 ? "대표 사진" : ""}</Tag>
-                        </ImagePreview>
-                    ))}
-                    </UploadArea>
-        </div>
+      <div style={{marginBottom: "1rem", width: '100%', overflowX: 'auto', whiteSpace: 'nowrap'}}>
+        <Title>보호 사진<span style={{color:"red"}}>*</span></Title>
+        <UploadArea>
+          {images.length < MAX_IMAGE && (
+            <UploadButton>
+                <label htmlFor="image-upload" style={{display: "flex", flexDirection: 'column'}}>
+                  <img src={Camera}/>
+                  <span style={{fontSize: "12px", marginTop: '10px', color: '#8E8E8E'}}>{`${images.length}/${MAX_IMAGE}`}</span>
+                </label>
+                <input
+                id="image-upload"
+                type="file"
+                accept="image/*"
+                multiple
+                onChange={handleImageUpload}
+                style={{display: "none"}}
+                />
+            </UploadButton>
+          )}
+          {images.map((image, index) => (
+            <ImagePreview key={image.id}>
+              <img src={image.url} alt={`Upload ${index}`}/>
+              <DeleteButton onClick={() => handleRemoveImage(image.id)}>x</DeleteButton>
+              {index === 0 && <Tag>대표 사진</Tag>}
+            </ImagePreview>
+          ))}
+        </UploadArea>
+      </div>
     )
 }
 

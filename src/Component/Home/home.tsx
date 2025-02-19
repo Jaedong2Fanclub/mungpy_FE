@@ -55,7 +55,7 @@ const Home = () => {
                 <div>
                     <SectionThird>
                         <Img3 src={Dog} alt="강아지"/>
-                        <Section3P>찾고 있어요</Section3P>
+                        <Section3P onClick={() => navigate("/animalSearch")}>찾고있어요</Section3P>
                     </SectionThird>
                     <PostItem data={posts}/>
                 </div>
@@ -75,7 +75,7 @@ const Home = () => {
                 </div>
             </SectionWrapper>
         </Box>
-            <Footer/>
+            {/* <Footer/> */}
         </>
     )
 }

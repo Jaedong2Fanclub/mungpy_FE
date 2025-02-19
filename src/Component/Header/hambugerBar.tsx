@@ -2,11 +2,10 @@ import { useCycle} from 'framer-motion';
 import { Navigation } from './nav';
 import { MenuToggle } from './toggle';
 import { Nav, NavBar } from './HeaderStyle';
-import { useSelector } from 'react-redux';
 
 const sidebar = {
   open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    clipPath: `circle(${height * 2 + 200}px at calc(100% - 40px) 40px)`,
     transition: {
       type: "spring",
       stiffness: 20,
@@ -14,7 +13,7 @@ const sidebar = {
     }
   }),
   closed: {
-    clipPath: "circle(30px at 90% 40px)",
+    clipPath: "circle(30px at calc(100% - 40px) 40px)",
     transition: {
       delay: 0.5,
       type: "spring",

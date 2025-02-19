@@ -97,3 +97,33 @@ export const idValidation = {
     message: "아이디는 8자 이내로 입력가능합니다.",
   },
 };
+
+export const BusinessNumberValid = (strNum: string) => {
+  // 하이픈을 자동으로 넣어주는 로직
+  const formattedNum = strNum.replace(/\D/g, ""); // 숫자 외 문자 모두 제거
+
+  // 10자리의 숫자인지 확인
+  if (formattedNum.length === 10) {
+    const regsplitNum: number[] = formattedNum
+      .split("")
+      .map((item) => parseInt(item, 10));
+    const regkey: number[] = [1, 3, 7, 1, 3, 7, 1, 3, 5];
+    let regNumSum = 0;
+
+    // 유효성 체크
+    for (let i = 0; i < regkey.length; i++) {
+      regNumSum += regkey[i] * regsplitNum[i];
+    }
+    regNumSum += Math.floor((regkey[8] * regsplitNum[8]) / 10);
+    const regCheck =
+      Math.floor(regsplitNum[9]) === (10 - (regNumSum % 10)) % 10;
+
+    // 유효성 검증 후 하이픈을 포함한 번호 반환
+    if (regCheck) {
+      return formattedNum.replace(/(\d{3})(\d{2})(\d{5})/, "$1-$2-$3");
+    } else {
+      return false;
+    }
+  }
+  return false;
+};

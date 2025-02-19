@@ -15,7 +15,9 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     | "ShareBtn"
     | "registrationBtn"
     | "submit"
-    | "animationBtn";
+    | "animationBtn"
+    | "filled"
+    | "outlined";
 }
 
 export interface ButtonGroupProps {
@@ -29,21 +31,16 @@ export interface ProfileImgUploadProps {
   onImageLoad: (file: File) => void;
 }
 
-export interface Dog {
-  age: number;
-  sex: string;
-  kind: string | null;
-  name: string;
-  image: string;
-  description: string;
-  matchReason: string;
-  personality: string[];
-  rescuePlace: string;
-  protectPlace: string;
-  protectTelno: string;
-  expirationDate: string;
-  latitude?: number;
-  longitude?: number;
+export interface resultProps {
+  breeds: string;
+  representative_image: string;
+  short_review: string;
+  detailed_review: string;
+  loyalty_score: number;
+  health_score: number;
+  activity_score: number;
+  intelligence_score: number;
+  traits: string[];
 }
 
 export interface MapState {
@@ -54,4 +51,21 @@ export interface MapState {
 export interface UploadedImage {
   id: string;
   url: string;
+}
+
+export interface AgreementOption {
+  label: JSX.Element;
+  isRequired: boolean;
+  checked: boolean;
+}
+
+export interface SignupProps {
+  shelterName: string;
+  id: string;
+  address: string;
+  zonecode: string;
+  name: string;
+  businessNumber: string;
+  password: string;
+  passwordConfirm: string;
 }

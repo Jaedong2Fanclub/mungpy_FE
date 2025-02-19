@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export const Nav = styled(motion.nav)`
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   bottom: 0;
   width: 300px;
   z-index: 1;
@@ -13,7 +13,7 @@ export const Nav = styled(motion.nav)`
 export const NavBar = styled(motion.div)`
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   bottom: 0;
   width: 300px;
   background: #fef7ff;
@@ -46,8 +46,8 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   position: absolute;
-  top: 18px;
-  left: 15px;
+  top: 15px;
+  right: 15px;
   width: 50px;
   height: 50px;
   background: transparent;
