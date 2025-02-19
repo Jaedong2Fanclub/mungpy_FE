@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Button from "../../Button/button";
+import Button from "../../button/button";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Dog from "../../../img/sohi_dog.png";

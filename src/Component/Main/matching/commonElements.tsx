@@ -1,4 +1,4 @@
-import Button from "../../Button/button"
+import Button from "../../button/button"
 import "./commonStyle.scss"
 
 export const Title = ({text}: any) => <p className="title" dangerouslySetInnerHTML={{ __html: text }} />

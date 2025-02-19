@@ -1,10 +1,10 @@
-import Input from "../Input/input";
+import Input from "../input/input";
 import styled from "styled-components";
 import TextAreaWithCounter from "../textArea/textArea";
 import BreedSelector from "../dropdown/breedDropdown";
 import * as E from "../../constants/formRequitements"
 import { useForm } from "react-hook-form";
-import { Error } from "../Join/joinStyle";
+import { Error } from "../join/joinStyle";
 import ShelterSelector from "../../utils/ShelterSeletor";
 import { useState } from "react";
 

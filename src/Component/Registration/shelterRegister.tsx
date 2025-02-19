@@ -3,7 +3,7 @@ import ShelterRegister1 from "./shlterRegister1";
 import ShelterRegister2 from "./shelterRegister2";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import Header from "../Header/header";
+import Header from "../header/header";
 
 const ShelterRegister = () => {
   const [registerData, setRegisterData] = useState({

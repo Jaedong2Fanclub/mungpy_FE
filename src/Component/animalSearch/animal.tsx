@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Header from "../Header/header";
-import Search from "../Search/search";
+import Header from "../header/header";
+import Search from "../search/search";
 import axios from "axios";
-import PostItem from "../List/findAnimalList";
+import PostItem from "../list/findAnimalList";
 import {HiChevronDown} from 'react-icons/hi2';
 import './style.scss';
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MapSelector from "../../utils/MapSelector";
-import SelectionBar from "../Button/selectionBar";
+import SelectionBar from "../button/selectionBar";
 import ShelterSelector from "../../utils/ShelterSeletor";
 import AnimalDropdown from "../dropdown/animalDropdown";
 import BreedSelector from "../dropdown/breedDropdown";

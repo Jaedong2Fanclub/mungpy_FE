@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Join from "../component/Join/join";
+import Join from "../component/join/join";
 import {IoIosArrowBack} from 'react-icons/io';
 import '../Styles/joinStyle.scss';
 

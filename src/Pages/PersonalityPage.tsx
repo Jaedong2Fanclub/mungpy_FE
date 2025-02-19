@@ -1,6 +1,6 @@
 import React from "react";
-import Personality from "../component/Main/personality";
-import TraitSelector from "../component/Main/traitSelector";
+import Personality from "../component/main/personality";
+import TraitSelector from "../component/main/traitSelector";
 
 const PersonalityPage = () => {
     return (

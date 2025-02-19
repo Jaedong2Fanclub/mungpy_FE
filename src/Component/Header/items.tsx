@@ -1,4 +1,4 @@
-import {Li, Text} from './HeaderStyle'
+import {Li, Text} from './headerStyle'
 
 const variants = {
   open: {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import KakaoLogin from "../../img/kakao_login.png"
-import Input from "../Input/input";
+import Input from "../input/input";
 import {useForm, SubmitHandler} from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ import * as E  from "../../constants/formRequitements"
 import { useDispatch } from "react-redux";
 import { SET_TOKEN } from "../../reducer/tokenSlice";
 import "./style.scss"
-import Button from "../Button/button";
+import Button from "../button/button";
 
 const Error = styled.p`
     color: #FF0001;

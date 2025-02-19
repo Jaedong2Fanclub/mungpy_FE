@@ -5,10 +5,10 @@ import {useForm, SubmitHandler} from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 import * as E from "../../constants/formRequitements"
 import axios from "axios";
-import Input from "../Input/input";
+import Input from "../input/input";
 import { Error, ModalStyles, InputWrapper, PasswordStrength, OverlayStyles } from "./joinStyle";
-import Button from "../Button/button";
-import Modal from "../Modal/modal";
+import Button from "../button/button";
+import Modal from "../modal/modal";
 import "./style.scss"
 
 const initialAgreementOptions: AgreementOption[] = [

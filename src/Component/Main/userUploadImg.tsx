@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ProfileImgUpload from "./profile/profile"
-import Button from "../Button/button";
+import Button from "../button/button";
 import { useNavigate } from "react-router-dom";
 import {Main2_Container, Main2_P, Main2_P2, P3} from './mungpy/mainStyle';
 

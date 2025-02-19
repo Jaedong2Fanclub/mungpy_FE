@@ -10,14 +10,14 @@ import {
     SectionThird,
     SectionWrapper
 } from './homeStyle';
-import Header from "../Header/header";
+import Header from "../header/header";
 import Friend from '../../img/friend.png';
 import FindMe from '../../img/findMe.png';
 import FindFriend from '../../img/findFriend.png';
 import Dog from '../../img/dog.png';
-import PostItem from "../List/findAnimalList";
+import PostItem from "../list/findAnimalList";
 import data from '../../mock/list.json';
-import Footer from "../Footer/footer";
+import Footer from "../footer/footer";
 import {useNavigate} from "react-router-dom";
 
 const Home = () => {

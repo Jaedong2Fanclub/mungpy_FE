@@ -1,7 +1,7 @@
 import { useCycle} from 'framer-motion';
 import { Navigation } from './nav';
 import { MenuToggle } from './toggle';
-import { Nav, NavBar } from './HeaderStyle';
+import { Nav, NavBar } from './headerStyle';
 
 const sidebar = {
   open: (height = 1000) => ({

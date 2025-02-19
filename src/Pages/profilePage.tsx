@@ -1,4 +1,4 @@
-import Profile from "../component/Main/userUploadImg";
+import Profile from "../component/main/userUploadImg";
 
 const ProfileUploadPage = () => {
     return (

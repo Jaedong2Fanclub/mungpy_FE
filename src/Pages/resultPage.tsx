@@ -1,5 +1,5 @@
 import React from "react";
-import Result from "../component/Main/result/result";
+import Result from "../component/main/result/result";
 
 const ResultPage = () => {
     return (

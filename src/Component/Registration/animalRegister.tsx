@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import arrow from '../../img/arrow.png';
 import { Box, Input, InputDiv,Name,HeaderDiv,SubLabel } from "./style";
-import Button from "../Button/button";
+import Button from "../button/button";
 import { useLocation, useNavigate } from "react-router-dom";
 import Dropdown from "../dropdown/dropdown";
 

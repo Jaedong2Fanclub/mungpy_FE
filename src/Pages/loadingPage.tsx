@@ -1,5 +1,5 @@
 import React from "react";
-import Loading from "../component/Loading/loading";
+import Loading from "../component/loading/loading";
 
 const LoadingPage = () => {
     return(

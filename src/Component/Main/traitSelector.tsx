@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { TraitButton } from "../Button/traitButton";
+import { TraitButton } from "../button/traitButton";
 import "../../Styles/traitSelector.scss";
-import Button from "../Button/button";
+import Button from "../button/button";
 
 const traits = [
     "사교적인",

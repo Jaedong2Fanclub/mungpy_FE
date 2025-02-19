@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {Main2_Container, Main2_P, SubLabel} from './mungpy/mainStyle';
-import Button from "../Button/button";
-import ButtonGroup from "../Button/personalityBtn";
+import Button from "../button/button";
+import ButtonGroup from "../button/personalityBtn";
 
 const Personality:React.FC = () => {
     const navigator = useNavigate();

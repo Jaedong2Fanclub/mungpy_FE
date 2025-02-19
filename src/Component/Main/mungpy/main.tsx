@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as M from "./mainStyle";
-import Button from "../../Button/button";
-import Background from "../../Loading/background";
+import Button from "../../button/button";
+import Background from "../../loading/background";
 
 const MainPage = () => {
     const navigate = useNavigate();

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { resultProps } from "../../../constants/interface";
 import './resultStyle.scss';
-import Button from "../../Button/button";
+import Button from "../../button/button";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import AnimalProgressBar from "../../progressBar/animalProgressBar";
 import dog from "../../../img/dog1.jpg";

@@ -6,7 +6,7 @@ import Profile from "../userUploadImg"
 import { SubTitle, Title } from "./commonElements"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
-import Loading from "../../Loading/loading"
+import Loading from "../../loading/loading"
 
 export const Matching = () => {
   const [stage, setStage] = useState(0);

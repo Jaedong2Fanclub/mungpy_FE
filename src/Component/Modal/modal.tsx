@@ -1,6 +1,6 @@
 import "./modalStyle.scss";
 import React, { useRef } from 'react';
-import Button from '../Button/button';
+import Button from '../button/button';
 
 interface AgreementOption {
     label: JSX.Element;

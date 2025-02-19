@@ -1,11 +1,11 @@
 import { useState } from "react";
-import SelectionBar from "../Button/selectionBar";
-import Input from "../Input/input"
+import SelectionBar from "../button/selectionBar";
+import Input from "../input/input"
 import AnimalImgUpload from "./animalImgUpload"
 import { UploadedImage } from "../../constants/interface";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { Error } from "../Join/joinStyle";
+import { Error } from "../join/joinStyle";
 
 const P = styled.p`
   font-weight: 600;

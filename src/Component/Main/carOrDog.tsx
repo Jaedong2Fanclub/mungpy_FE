@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Dog from "../../img/sohi2_dog.png";
 import Cat from "../../img/sohi3_dog.png"
-import Button from "../Button/button";
+import Button from "../button/button";
 import "./animalSelectStyle.scss";
 
 interface AnimalSelectorProps {

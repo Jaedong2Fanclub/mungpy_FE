@@ -1,5 +1,5 @@
 import {motion} from 'framer-motion';
-import {Button} from "./HeaderStyle";
+import {Button} from "./headerStyle";
 
 const Path = (props:any) => (
   <motion.path

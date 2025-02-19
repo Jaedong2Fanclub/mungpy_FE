@@ -1,5 +1,5 @@
 import { MenuItem } from "./items";
-import { Ul } from './HeaderStyle';
+import { Ul } from './headerStyle';
 import {useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { DELETE_TOKEN } from "../../reducer/tokenSlice";

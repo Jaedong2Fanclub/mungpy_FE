@@ -1,22 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Main from "./Pages/mainPage"
-import ProfileUploadPage from "./Pages/profilePage";
-import PersonalityPage from "./Pages/PersonalityPage";
-import LoadingPage from "./Pages/loadingPage";
-import ResultPage from "./Pages/resultPage";
-import DetailPage from "./Pages/detailPage";
-import Home from "./component/Home/home";
-import AnimalRegister from "./Pages/AnimalRegisterPage";
-import ShelterRegister from "./component/Registration/shelterRegister";
-import AnimalSearchPage from "./Pages/animalSearchPage";
-import DetailAnimalPage from "./Pages/DetailAnimalPage";
-import ChatPage from "./Pages/ChatPage";
-import SearchResultPage from "./Pages/SearchResultPage";
-import ShelterSearchPage from "./Pages/ShelterSearchPage";
-import { LoginPage } from "./Pages/login";
-import JoinPage from "./Pages/joinPage";
-import AnimalSelector from "./component/Main/carOrDog";
-import { Matching } from "./component/Main/matching/matching";
+import Main from "./pages/mainPage"
+import ProfileUploadPage from "./pages/profilePage";
+import PersonalityPage from "./pages/personalityPage";
+import LoadingPage from "./pages/loadingPage";
+import ResultPage from "./pages/resultPage";
+import DetailPage from "./pages/detailPage";
+import Home from "./component/home/home";
+import AnimalRegister from "./pages/animalRegisterPage";
+import ShelterRegister from "./component/registration/shelterRegister";
+import AnimalSearchPage from "./pages/animalSearchPage";
+import DetailAnimalPage from "./pages/detailAnimalPage";
+import ChatPage from "./pages/chatPage";
+import SearchResultPage from "./pages/searchResultPage";
+import ShelterSearchPage from "./pages/shelterSearchPage";
+import { LoginPage } from "./pages/login";
+import JoinPage from "./pages/joinPage";
+import AnimalSelector from "./component/main/carOrDog";
+import { Matching } from "./component/main/matching/matching";
 
 const Router = () => {
     return (
