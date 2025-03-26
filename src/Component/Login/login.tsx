@@ -14,6 +14,7 @@ import NaverLogin from "../../img/naverButton.png"
 import SitDog from "../../img/sitDog.svg"
 import Logo from "../../img/mungpyLogo.svg";
 import UpDog from "../../img/upDog.svg";
+// 이제 좀 올라가보자 ~
 
 const Error = styled.p`
     color: #FF0001;
