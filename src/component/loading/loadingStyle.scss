@@ -1,0 +1,24 @@
+.loading-container {
+  width: 390px;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(#F9EEDA, #FF7920);
+  height: 100%;
+
+  .loading-text{
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 100px;
+    padding: 0 20px;
+  }
+
+  .loading-subtext {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 0 20px;
+
+    span{
+      padding-left: 0.5rem;
+    }
+  }
+}

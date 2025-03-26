@@ -33,13 +33,13 @@ export interface ProfileImgUploadProps {
 
 export interface resultProps {
   breeds: string;
-  representative_image: string;
-  short_review: string;
-  detailed_review: string;
-  loyalty_score: number;
-  health_score: number;
-  activity_score: number;
-  intelligence_score: number;
+  representativeImage: string;
+  shortReview: string;
+  detailedReview: string;
+  loyaltyScore: number;
+  healthScore: number;
+  activityScore: number;
+  intelligenceScore: number;
   traits: string[];
 }
 
