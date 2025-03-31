@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import './loadingStyle.scss';
-import { HiDotsHorizontal } from "react-icons/hi";
 import dogFoot from "./mungpy_animation.json";
 import {Player} from '@lottiefiles/react-lottie-player';
 
