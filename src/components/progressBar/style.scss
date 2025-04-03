@@ -1,0 +1,25 @@
+/* ProgressBar.css */
+.progress-bar-container {
+  width: 90%;
+  background-color: #eee;
+  border-radius: 5px;
+  height: 10px;
+  position: relative;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 5px;
+  background-color: #FF7920;
+  position: relative;
+  text-align: left;
+}
+
+.progress-dog {
+  position: absolute;
+  top: -20px;
+  transform: translateY(-50%);
+  right: -20px; /* 이미지가 항상 바의 오른쪽 끝에 위치하도록 조정 */
+}

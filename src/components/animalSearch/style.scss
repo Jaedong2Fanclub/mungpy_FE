@@ -1,0 +1,124 @@
+.search-button-container-wrapper{
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+
+  .search-button-container {
+    display: flex;
+    background: none;
+    border: none; 
+    justify-content: flex-start;
+    width: max-content; // 내용에 맞게 버튼 크기 조정하기
+
+    // 결과 컨테이너
+    .result-container {
+      margin-top: 20px;
+      display: flex; // 플렉스 박스 레이아웃
+      gap: 5px; // 요소 간 간격
+      width: 100%;
+      min-width: max-content;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.result-container-wrapper {
+  overflow-x: auto; // 가로 스크롤 허용
+  white-space: nowrap; // 요소 줄바꿈 방지
+  display: flex;
+  width: 100%;
+
+  .result-container {
+    display: flex;
+    gap: 5px;
+    min-width: max-content; // 요소들이 한 줄로 유지되도록
+    box-sizing: border-box;
+    align-items: center;
+    overflow-x: auto; // 가로 스크롤 허용
+  white-space: nowrap; // 요소 줄바꿈 방지
+  }
+}
+
+// 스크롤 바 숨기기 (선택 사항)
+.search-button-container-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+// 스크롤 바 숨기기 (선택 사항)
+.result-container-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: white;
+  color: #9c9c9c;
+  border: 1px solid #9c9c9c;
+  border-radius: 20px;
+  margin-right: 10px;
+  font-size: 14px;
+  white-space: nowrap; // 텍스트 줄바꿈 방지
+
+  &.complete {
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+  }
+}
+
+.swipe-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background-color: white;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out; // 부드러운 애니메이션
+  transform: translateY(100%); // 기본적으로 화면 아래에 숨김
+  z-index: 1000;
+
+  &.open {
+    transform: translateY(0); // 열렸을 때 화면에 표시
+  }
+}
+
+// 오버레이
+.overlay {
+  display: none; // 기본적으로 숨김
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+
+  &.visible {
+    display: block; // 활성화 시 표시
+  }
+}
+
+.search-title {
+  margin-top: 1.5rem;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+hr {
+  border: 2px solid #F6F6F6;
+  margin-top: 1rem;
+}
+
+.reset-button {
+  margin-right: 10px;
+  width: 55px;
+  padding: 5px 10px;
+  background-color: white;
+  color: #ff8c00;
+  border: 1px solid #9c9c9c;
+  border-radius: 20px;
+  cursor: pointer;
+  min-width: 55px;
+}

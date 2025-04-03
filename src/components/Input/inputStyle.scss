@@ -1,0 +1,31 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // margin-bottom: 3px;
+
+  h2 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  input {
+    // width: 320px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #DEDEDE;
+    padding-left: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 8px;
+
+    &::placeholder {
+      color: #B3B3B3;
+    }
+  }
+}
+
+.required {
+  color: red;
+}

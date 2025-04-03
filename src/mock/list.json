@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "History Unfolded",
+    "subtitle": "The impact of storytelling.",
+    "image": "https://via.placeholder.com/300x200.png?text=Adventure"
+  },
+  {
+    "id": 2,
+    "title": "Traveling the World",
+    "subtitle": "A glimpse into urban life.",
+    "image": "https://via.placeholder.com/300x200.png?text=Universe"
+  },
+  {
+    "id": 3,
+    "title": "Science Discoveries",
+    "subtitle": "The future of digital tools.",
+    "image": "https://via.placeholder.com/300x200.png?text=Fashion"
+  },
+  {
+    "id": 4,
+    "title": "Music Around the World",
+    "subtitle": "Wanderlust in every corner of the globe.",
+    "image": "https://via.placeholder.com/300x200.png?text=Tech"
+  },
+  {
+    "id": 5,
+    "title": "Adventure Awaits",
+    "subtitle": "The importance of mental well-being.",
+    "image": "https://via.placeholder.com/300x200.png?text=Sports"
+  },
+  {
+    "id": 6,
+    "title": "The Beauty of Nature",
+    "subtitle": "The impact of storytelling.",
+    "image": "https://via.placeholder.com/300x200.png?text=Mindfulness"
+  },
+  {
+    "id": 7,
+    "title": "Fashion Trends This Year",
+    "subtitle": "Learning from the past.",
+    "image": "https://via.placeholder.com/300x200.png?text=Photography"
+  },
+  {
+    "id": 8,
+    "title": "Science Discoveries",
+    "subtitle": "Learning from the past.",
+    "image": "https://via.placeholder.com/300x200.png?text=Science"
+  },
+  {
+    "id": 9,
+    "title": "Fashion Trends This Year",
+    "subtitle": "The importance of mental well-being.",
+    "image": "https://via.placeholder.com/300x200.png?text=Food"
+  },
+  {
+    "id": 10,
+    "title": "The Power of Literature",
+    "subtitle": "Exploring new places, new faces.",
+    "image": "https://via.placeholder.com/300x200.png?text=Fashion"
+  },
+  {
+    "id": 11,
+    "title": "Food Lovers' Paradise",
+    "subtitle": "Wanderlust in every corner of the globe.",
+    "image": "https://via.placeholder.com/300x200.png?text=Architecture"
+  },
+  {
+    "id": 12,
+    "title": "Digital Transformation",
+    "subtitle": "Exciting moments from the world of sports.",
+    "image": "https://via.placeholder.com/300x200.png?text=Science"
+  },
+  {
+    "id": 13,
+    "title": "Mindfulness and Meditation",
+    "subtitle": "The cosmos: What lies beyond.",
+    "image": "https://via.placeholder.com/300x200.png?text=Fashion"
+  },
+  {
+    "id": 14,
+    "title": "Art of Photography",
+    "subtitle": "Groundbreaking advancements in science.",
+    "image": "https://via.placeholder.com/300x200.png?text=Science"
+  },
+  {
+    "id": 15,
+    "title": "History Unfolded",
+    "subtitle": "Capturing the perfect shot.",
+    "image": "https://via.placeholder.com/300x200.png?text=Universe"
+  },
+  {
+    "id": 16,
+    "title": "The Power of Literature",
+    "subtitle": "Groundbreaking advancements in science.",
+    "image": "https://via.placeholder.com/300x200.png?text=Mindfulness"
+  },
+  {
+    "id": 17,
+    "title": "The Power of Literature",
+    "subtitle": "A glimpse into urban life.",
+    "image": "https://via.placeholder.com/300x200.png?text=Architecture"
+  },
+  {
+    "id": 18,
+    "title": "Healthy Living Tips",
+    "subtitle": "How fashion evolves over the years.",
+    "image": "https://via.placeholder.com/300x200.png?text=Food"
+  },
+  {
+    "id": 19,
+    "title": "Mindfulness and Meditation",
+    "subtitle": "Exploring new places, new faces.",
+    "image": "https://via.placeholder.com/300x200.png?text=History"
+  },
+  {
+    "id": 20,
+    "title": "Architecture and Design",
+    "subtitle": "How fashion evolves over the years.",
+    "image": "https://via.placeholder.com/300x200.png?text=Wildlife"
+  }
+]
