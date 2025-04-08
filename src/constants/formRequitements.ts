@@ -92,10 +92,12 @@ export const phoneValidation = {
 
 export const idValidation = {
   require: "아이디를 입력해주세요",
-  maxLength: {
-    value: 8,
-    message: "아이디는 8자 이내로 입력가능합니다.",
-  },
+  validate: {
+    format: (value: any) => {
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+      return emailRegex.test(value) || "올바른 이메일 형식을 입력해주세요.";
+    }
+  }
 };
 
 export const BusinessNumberValid = (strNum: string) => {

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import * as E from "../../constants/formRequitements"
 import axios from "axios";
 import Input from "../Input/input";
-import { Error, ModalStyles, InputWrapper, PasswordStrength, OverlayStyles } from "./joinStyle";
+import { Error, InputWrapper, PasswordStrength } from "./joinStyle";
 import Button from "../button/button";
 // import Modal from "../modal/modal";
 import "./style.scss"
@@ -160,11 +160,11 @@ const isAllRequiredChecked = checkedOptions.every(option => !option.isRequired |
           <InputWrapper>
             <Input
               title="아이디"
-              placeholder="아이디를 입력해주세요(8자이내)"
+              placeholder="아이디를 입력해주세요(이메일)"
               type="text"
               {...register("id", {
                 required : E.idValidation.require,
-                maxLength: E.idValidation.maxLength
+                validate: E.idValidation.validate
               })}
               onChange={handleIdChange}
             />

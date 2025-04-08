@@ -266,7 +266,7 @@ const Login = () => {
               placeholder="아이디 입력"
               {...register("id", {
                 required: E.idValidation.require,
-                maxLength : E.idValidation.maxLength
+                validate: E.idValidation.validate
               })}
             />
             {errors.id && <Error>{errors.id.message}</Error>}
