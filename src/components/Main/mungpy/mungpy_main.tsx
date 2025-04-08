@@ -15,7 +15,7 @@ const Mungpy_Main = () => {
   }
 
   useEffect(() => {
-    axios.get('/person')
+    axios.get(`${process.env.REACT_APP_API_URL}/person`)
     .then((res) => {
       setParticipants(res.data.count);
     }).catch((error)=> {

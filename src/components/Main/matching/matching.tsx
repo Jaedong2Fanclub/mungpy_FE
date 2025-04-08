@@ -38,7 +38,7 @@ export const Matching = () => {
 
       setIsLoading(true);
       try {
-        const res = await axios.post('/api/matching-animals', finalFormData, {
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/matching-animals`, finalFormData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

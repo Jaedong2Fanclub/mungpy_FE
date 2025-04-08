@@ -45,7 +45,7 @@ const ShelterRegister = () => {
     const finalData = {...registerData, ...data};
     console.log("data : ", finalData);
 
-    axios.post("api url", finalData)
+    axios.post(`${process.env.REACT_APP_API_URL}/api/animal`, finalData)
     .then((res) => {
       console.log("data success : ", res);
       navigate('/animalSearch');

@@ -8,7 +8,7 @@ const DetailResult = () => {
     const [images, setImages] = useState<string[]>([]);
 
     useEffect(() => {
-        axios.get('/api/matching-animals/images')
+        axios.get(`${process.env.REACT_APP_API_URL}/api/matching-animals/images`)
         .then(res => {
             setImages(res.data);
         })  

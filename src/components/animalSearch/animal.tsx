@@ -23,9 +23,9 @@ const AnimalSearch = ({text} : {text:string}) => {
   useEffect(() => {
     const fetchAnimals = async() => {
       try {
-        let apiUrl = "/api/animals";
+        let apiUrl = `${process.env.REACT_APP_API_URL}/animal`;
         if(text === "보호소 정보 조회") {
-          apiUrl = "api/shelters";
+          apiUrl = `${process.env.REACT_APP_API_URL}/shelters`;
         }
         const res = await axios.get(apiUrl);
         setAllAnimals(res.data);
@@ -66,7 +66,7 @@ const AnimalSearch = ({text} : {text:string}) => {
     }).toString();
 
     try {
-      const response = await axios.get(`/api/animals?${params}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/animal?${params}`);
       setFilteredAnimals(response.data);
     } catch (error) {
       console.error("Filtered search error:", error);

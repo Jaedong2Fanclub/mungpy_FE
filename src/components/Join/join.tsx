@@ -91,7 +91,7 @@ const isAllRequiredChecked = checkedOptions.every(option => !option.isRequired |
     try {
       const CheckRes = await axios.get(
         // api 주소
-        `/auth/exist/idCheck/${id}`
+        `${process.env.REACT_APP_API_URL}/auth/exist/idCheck/${id}`
       );
       if(CheckRes.data.duplicate === true) {
         setIdCheckResult({message : "이미 사용중인 아이디입니다.", type: "error"});
@@ -128,7 +128,7 @@ const isAllRequiredChecked = checkedOptions.every(option => !option.isRequired |
   }
   setIsLoading(true);
   try {
-      const res = await axios.post(`/api/signup`,userData,{
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/signup`,userData,{
           headers: {
               "Content-Type": "application/json",
           }
