@@ -17,7 +17,7 @@ const BreedSelector:React.FC<BreedSelectorProps> = ({animalType, onBreedSelect, 
     const fetchBreeds = async() => {
       try {
         const query = animalType ? `?animalType=${animalType}` : '';
-        const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/animals/breeds`);
+        const res = await axios.get(`${process.env.REACT_APP_BASE_URL}api/animals/breeds/${query}`);
         const breeds = res.data.map((breed: { breedName: string }) => ({ 
           value : breed.breedName,
           label : breed.breedName,
