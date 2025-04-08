@@ -193,7 +193,7 @@ const Login = () => {
     console.log(data);
     setIsLoading(true);
     const formData = {
-      id : data.id,
+      email : data.id,
       password : data.password
     };
 

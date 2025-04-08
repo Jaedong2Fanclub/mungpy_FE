@@ -112,7 +112,7 @@ const isAllRequiredChecked = checkedOptions.every(option => !option.isRequired |
 
     const userData = {
       shelterName: data.shelterName,
-      id : data.id,
+      email : data.id,
       address: `${address} ${detailedAddress}`,
       zonecode: zonecode,
       name : data.name,
