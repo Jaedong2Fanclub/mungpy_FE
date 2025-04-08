@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { resultProps } from "../../../constants/interface";
 import './resultStyle.scss';
 import Button from "../../button/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import AnimalProgressBar from "../../progressBar/animalProgressBar";
 // import dog from "../../../img/dog1.jpg";
 import { MdOutlineFileDownload, MdOutlineShare } from "react-icons/md";
@@ -10,7 +10,8 @@ import html2canvas from "html2canvas";
 import { saveAs } from "file-saver";
 
 const Result = () => {
-    const [data, ] = useState<resultProps | null>(null);
+    const location = useLocation();
+    const data = location.state as resultProps;
     const navigate = useNavigate();
 
     const progressData = [
@@ -23,6 +24,34 @@ const Result = () => {
     // const traitsData = {
     //     traits: [data?.traits[0], data?.traits[1], data?.traits[2]]
     // }
+
+//     activityScore
+// : 
+// 50
+// breeds
+// : 
+// "eric"
+// detailedReview
+// : 
+// "충성심이 강하나 때때로 독립성이 있어요"
+// healthScore
+// : 
+// 51
+// intelligenceScore
+// : 
+// 80
+// loyaltyScore
+// : 
+// 80
+// representativeImage
+// : 
+// "https://avatars.githubusercontent.com/u/92240138?v=4"
+// shortReview
+// : 
+// "사용자님은 귀여운 푸들상 입니다."
+// traits
+// : 
+// ["산책은 필수에요", "밥은 3끼를 먹어요", "우리나라에서 가장 충심이 강해요"]
 
     const HightLightWord = (text: string) => {
         const words = text.split(" ");
