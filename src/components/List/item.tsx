@@ -24,7 +24,7 @@ const ItemImg = styled.img`
 const AnimalFindItem:React.FC<dataProps> = ({id, title, subtitle, image}) => {
     const nav = useNavigate();
     const handleSelect = () => {
-        nav(`${process.env.REACT_APP_BASE_URL}api/animals`);
+        nav(`${process.env.REACT_APP_BASE_URL}/api/animals`);
     };
     return (
         <ItemWrapper onClick={handleSelect}>

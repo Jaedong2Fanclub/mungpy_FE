@@ -66,7 +66,7 @@ const AnimalSearch = ({text} : {text:string}) => {
     }).toString();
 
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/animal?${params}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/animals?${params}`);
       setFilteredAnimals(response.data);
     } catch (error) {
       console.error("Filtered search error:", error);
