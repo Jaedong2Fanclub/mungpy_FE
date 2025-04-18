@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import HambugerBar from "./hambugerBar";
+import HambugerBar from "../header/hambugerBar";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../img/mungpyLogo.svg";
 const HeaderWrapper = styled.div`
-    width: 390px;
+    width: 100%;
     height: 75px;
     display: flex;
     align-items: center;

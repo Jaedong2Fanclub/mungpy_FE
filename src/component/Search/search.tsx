@@ -33,7 +33,7 @@ const Search = ({
     { id: "gender3", name: "남자", value: "MALE" },
   ];
 
-  const isShelterSearch = title === "보호소 정보 조회";
+  const isShelterSearch = title === "보호소 리스트";
 
   const handleChange = (filed: string, value: string) => {
     setFormData((prev) => ({...prev, [filed]: value}));

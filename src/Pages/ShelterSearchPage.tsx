@@ -3,7 +3,7 @@ import AnimalSearch from "../component/animalSearch/animal";
 const ShelterSearchPage = () => {
   return (
     <>
-    <AnimalSearch text="보호소 정보 조회"/>
+    <AnimalSearch text="보호소 리스트"/>
     </>
   )
 }

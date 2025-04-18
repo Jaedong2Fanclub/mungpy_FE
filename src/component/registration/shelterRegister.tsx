@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ShelterRegister1 from "./shlterRegister1";
-import ShelterRegister2 from "./shelterRegister2";
+import ShelterRegister1 from "../Registration/shlterRegister1";
+import ShelterRegister2 from "../Registration/shelterRegister2";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import Header from "../header/header";

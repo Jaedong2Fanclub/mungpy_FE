@@ -3,9 +3,9 @@
   justify-content: center;
   align-items: flex-end;
   width: 390px;
-  background-image: url("../../../img/bondBackground.svg");
-  overflow: hidden;
-  height: 100vh;
+  // background-image: url("../../../img/bondBackground.svg");
+  overflow-x: hidden;
+  // height: 100vh;
 
   .img-div {
     position: absolute; /* 컨테이너 기준으로 배치 */

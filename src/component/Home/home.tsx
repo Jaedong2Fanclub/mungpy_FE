@@ -21,7 +21,7 @@ import FindIcon from "../../img/findIcon.svg";
 import FindItIcon from "../../img/findItIcon.svg";
 import BestReviewIcon from "../../img/bestReview.svg";
 import PostItem from "../List/findAnimalList";
-import data from '../../mock/list.json';
+import {list} from '../../mock/list';
 import {useNavigate} from "react-router-dom";
 
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        setPosts(data);
+        setPosts(list);
     },[])
     return (
         <Box>
