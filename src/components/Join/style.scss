@@ -1,0 +1,80 @@
+.agreement-section {
+  margin-top: 1rem;
+  p {
+    margin-bottom: 1rem;
+  }
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .custom-checkbox {
+      opacity: 0;
+      position: absolute;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      padding-left: 32px; // 체크 아이콘에 대한 여유 공간
+
+      .checkbox-icon {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%; // 원형 디자인
+        border: 2px solid #ccc; // 기본 경계선 색상
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &::before {
+          content: '\2713'; // 체크 마크 유니코드
+          color: white;
+          font-weight: bold;
+          font-size: 14px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          opacity: 0;
+        }
+      }
+    }
+
+    .custom-checkbox:checked + label .checkbox-icon {
+      background-color: #FF5722; // 활성화 색상 변경
+      border-color: #FF5722; // 경계선 색상도 동일하게
+
+      &::before {
+        opacity: 1; // 체크 표시 표시
+      }
+    }
+  }
+}
+
+.id-check-result {
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.id-check-result.error {
+  color: #ff4242; /* 빨간색 오류 메시지 */
+  background-color: #ffe0e0;
+}
+
+.id-check-result.success {
+  color: #318431; /* 녹색 성공 메시지 */
+  background-color: #e0ffe0;
+}
+
+
+hr {
+  margin-bottom: 0.5rem;
+  background-color: none;
+  border-radius: 10px;
+}
