@@ -2,10 +2,10 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import HoverHeartIcon from "../../img/hoverHeart.svg";
 import HeartIcon from "../../img/heart.svg";
-import { FaRegComment } from "react-icons/fa";
 import { IoShareSocialOutline } from "react-icons/io5";
 import ShareContainer from '../share/ShareContainer';
 import { PostItemProps } from '../../constants/interface';
+import { useNavigate } from 'react-router-dom';
 
 const P = styled.p`
     font-size: 10px;
@@ -19,7 +19,7 @@ const IconContainer = styled.div`
     flex-direction: row;
     gap: 16px;
     padding: 0px 30px;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-top: 10px;
 `;
 
@@ -49,18 +49,18 @@ const Span = styled.span`
     font-size: 14px;
 `;
 
-const PostItem = ({ userImage, userName, userDescription, postImages, postTitle, postContent, postDate, postLike, postComment, postView, postId }: PostItemProps) => {
+const PostItem = ({ userImage, userName, userDescription, postImages, postTitle, postContent, postDate, postLike, postComment, postView, postId, comments }: PostItemProps) => {
     const [clicked, setClicked] = useState(false);
     const [likeCount, setLikeCount] = useState(postLike);
-    const { handleShare, shareClicked } = ShareContainer({data: {userImage, userName, userDescription, postImages, postTitle, postContent, postDate, postLike, postComment, postView, postId}});
-    
+    const { handleShare, shareClicked } = ShareContainer({data: {userImage, userName, userDescription, postImages, postTitle, postContent, postDate, postLike, postComment, postView, postId, comments}});
+    const navigate = useNavigate();
     const handleClick = () => {
         setClicked(!clicked);
         setLikeCount(prev => clicked ? prev - 1 : prev + 1);
     }
 
     return (
-        <div>
+        <div onClick={() => navigate(`/community/${postId}`)}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexDirection: 'row', padding: '10px', width: '100%' }}>
                 <img src={userImage} alt="userImage" style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover' }}/>
                 <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '3px'}}>
@@ -87,10 +87,6 @@ const PostItem = ({ userImage, userName, userDescription, postImages, postTitle,
                 <IconWrapper onClick={handleClick}>
                     {clicked ? <img src={HoverHeartIcon} alt="좋아요"/> : <img src={HeartIcon} alt="좋아요"/>}
                     <Span color={clicked ? '#FF7920' : '#666'}>좋아요</Span>
-                </IconWrapper>
-                <IconWrapper>
-                    <FaRegComment />
-                    <Span color="#666">댓글</Span>
                 </IconWrapper>
                 <IconWrapper onClick={handleShare}>
                     <IoShareSocialOutline style={{ color: shareClicked ? '#FF7920' : '#666' }}/>

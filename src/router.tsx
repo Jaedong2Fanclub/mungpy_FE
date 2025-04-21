@@ -21,6 +21,8 @@ import CommunityPage from "./Pages/Community";
 import Help from "./component/community/Help";
 import Found from "./component/community/Found";
 import AdoptionReview from "./component/community/AdoptionReview";
+import PostDetail from "./component/community/postDetail";
+
 const Router = () => {
     return (
         <BrowserRouter>
@@ -53,6 +55,7 @@ const Router = () => {
                     <Route path="help" element={<Help />} />
                     <Route path="found" element={<Found />} />
                     <Route path="adoption" element={<AdoptionReview />} />
+                    <Route path=":postId" element={<PostDetail />} />
                 </Route>
             </Routes>
         </BrowserRouter>

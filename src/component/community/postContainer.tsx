@@ -1,7 +1,7 @@
 import PostItem from "./PostItem";
 import { post } from "../../mock/post";
 import styled from "styled-components";
-
+import { CommentProps } from "../../constants/interface";
 const PostWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@ const PostContainer = () => {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             {post.map((item) => (
                 <PostWrapper key={item.postId}>
-                    <PostItem {...item} />
+                    <PostItem {...item} comments={item.comments as CommentProps[]} />
                 </PostWrapper>
             ))}
         </div>

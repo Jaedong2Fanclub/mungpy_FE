@@ -101,6 +101,14 @@ export interface ShelterDetailProps {
   lat: number;
   lng: number;
 }
+export interface CommentProps {
+  userImage: string;
+  userName: string;
+  userDescription: string;
+  commentContent: string;
+  commentDate: string;
+  commentId: number;
+}
 export interface PostItemProps {
   userImage: string;
   userName: string;
@@ -113,4 +121,5 @@ export interface PostItemProps {
   postComment: number;
   postView: number;
   postId: number;
+  comments: CommentProps[];
 }

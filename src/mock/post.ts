@@ -11,6 +11,36 @@ export const post = [
         postComment: 100,
         postView: 100,
         postId: 1,
+        comments: [
+            {
+                userImage: "https://cdn.eyesmag.com/content/uploads/sliderImages/2025/03/27/%EC%B9%B42-40eb514b-117c-49df-bd91-f87568030a50.jpg",
+                userName: "차은우",
+                userDescription: "차은우 is a software engineer at Google",
+                commentContent: "Comment Content",
+                commentDate: "2021-01-01",
+            },
+            {
+                userImage: "https://cdn.eyesmag.com/content/uploads/sliderImages/2025/03/27/%EC%B9%B42-40eb514b-117c-49df-bd91-f87568030a50.jpg",
+                userName: "차은우",
+                userDescription: "차은우 is a software engineer at Google",
+                commentContent: "Comment Content",
+                commentDate: "2021-01-01",
+            },
+            {
+                userImage: "https://cdn.eyesmag.com/content/uploads/sliderImages/2025/03/27/%EC%B9%B42-40eb514b-117c-49df-bd91-f87568030a50.jpg",
+                userName: "차은우",
+                userDescription: "차은우 is a software engineer at Google",
+                commentContent: "Comment Content",
+                commentDate: "10시간",
+            },
+            {
+                userImage: "https://cdn.eyesmag.com/content/uploads/sliderImages/2025/03/27/%EC%B9%B42-40eb514b-117c-49df-bd91-f87568030a50.jpg",
+                userName: "차은우",
+                userDescription: "차은우 is a software engineer at Google",
+                commentContent: "Comment Content",
+                commentDate: "8시간",
+            },
+        ]
     },
     {
         userImage: "https://cdn.eyesmag.com/content/uploads/sliderImages/2025/03/27/%EC%B9%B42-40eb514b-117c-49df-bd91-f87568030a50.jpg",
