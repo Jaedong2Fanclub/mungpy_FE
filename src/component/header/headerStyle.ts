@@ -45,8 +45,11 @@ export const Li = styled(motion.li)`
 export const Text = styled.div`
   border-radius: 5px;
   width: 200px;
-  height: 20px;
+  height: 30px;
   flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 `;
 
 export const Button = styled.button`

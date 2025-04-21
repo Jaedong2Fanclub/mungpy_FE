@@ -15,6 +15,8 @@ import JoinPage from "./Pages/joinPage";
 import { Matching } from "./component/Main/matching/matching";
 import DetailAnimalPage from "./component/detail/animalDetail";
 import ShelterDetail from "./component/detail/shelterDetail";
+import MyPage from "./Pages/myPage";
+import LikeAnimalsPage from "./Pages/LikeAnimals";
 const Router = () => {
     return (
         <BrowserRouter>
@@ -41,6 +43,8 @@ const Router = () => {
                 <Route path='/animal/:id/chat' element={<ChatPage/>}/>
                 <Route path='/shelter/:id' element={<ShelterDetail/>}/>
                 <Route path='/searchResult' element={<SearchResultPage/>}/>
+                <Route path='/myPage' element={<MyPage/>}/>
+                <Route path='/likeAnimals' element={<LikeAnimalsPage/>}/>
             </Routes>
         </BrowserRouter>
     )

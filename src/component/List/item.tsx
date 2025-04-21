@@ -1,13 +1,6 @@
-import {useNavigate} from "react-router-dom";
-import styled from "styled-components";
-
-interface dataProps {
-    id: number;
-    title:string;
-    subtitle: string;
-    image: string;
-}
-
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { DataProps } from '../../constants/interface';
 const ItemWrapper = styled.div`
   min-width: 140px;
   margin-right: 20px;
@@ -20,20 +13,32 @@ const ItemImg = styled.img`
   height: 140px;
 `;
 
-
-const AnimalFindItem:React.FC<dataProps> = ({id, title, subtitle, image}) => {
-    const nav = useNavigate();
-    const handleSelect = () => {
-        nav(`${process.env.REACT_APP_BASE_URL}api/animals`);
-    };
+const AnimalFindItem:React.FC<DataProps> = ({id, breedName, gender, age, weight, images, rescueDetail}) => {
+    const navigate = useNavigate();
     return (
-        <ItemWrapper onClick={handleSelect}>
-          <ItemImg src={image} alt={title} />
-          <div style={{ fontWeight: 'bold' }}>{title}</div>
-          <div style={{ fontSize: '8px' }}>{subtitle}</div>
-        </ItemWrapper>
-      );
-      
+      <ItemWrapper onClick={() => navigate(`/animal/${id}`)}>
+        <ItemImg src={images[0]} alt={breedName} />
+        <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+          <div style={{ fontWeight: "bold", fontSize: "14px" }}>
+            {breedName}
+          </div>
+          <div
+            style={{
+              fontSize: "10px",
+              color: "#9C9C9C",
+              display: "flex",
+              flexDirection: "row",
+              gap: "5px",
+              fontWeight: "normal",
+            }}
+          >
+            <span>{gender} /</span>
+            <span>{age} /</span>
+            <span>{weight}kg</span>
+          </div>
+        </div>
+      </ItemWrapper>
+    );
 }
 
 export default AnimalFindItem;

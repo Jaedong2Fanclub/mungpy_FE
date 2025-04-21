@@ -17,7 +17,7 @@ const variants = {
   },
 };
 
-export const MenuItem = ({ id, text, onClick }: any) => {
+export const MenuItem = ({ id, text, onClick, profileImage }: any) => {
   return (
     <Li
       variants={variants}
@@ -25,6 +25,20 @@ export const MenuItem = ({ id, text, onClick }: any) => {
       whileTap={{ scale: 0.95 }}
     >
       <Text className="text-placeholder">
+        {id === "0" && profileImage && (
+          <img 
+            src={profileImage} 
+            alt="profile" 
+            style={{ 
+              width: '50px', 
+              height: '50px', 
+              borderRadius: '50%',
+              // marginRight: '8px',
+              // verticalAlign: 'middle'
+              objectFit: 'cover'
+            }} 
+          />
+        )}
         <span className="text" onClick={onClick}>{text}</span>
       </Text>
     </Li>

@@ -3,6 +3,7 @@ import { Ul } from './headerStyle';
 import {useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { DELETE_TOKEN } from "../../reducer/tokenSlice";
+import MockImage from "../../img/mockImage.png";
 
 const variants = {
   open: {
@@ -12,6 +13,12 @@ const variants = {
     transition: { staggerChildren: 0.05, staggerDirection: -1 }
   }
 };
+
+// mock data
+const MockuserData = {
+  username: "홍길동",
+  profileImage: MockImage
+}
 
 const getItems = (
     username: string | null,
@@ -33,7 +40,11 @@ const getItems = (
 export const Navigation = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {username, profileImage} = useSelector((state:any) => state.authToken);
+  // original code
+  // const {username, profileImage} = useSelector((state:any) => state.authToken);
+  
+  // mock data
+  const { username, profileImage } = MockuserData;
 
   const Logout = () => {
     dispatch(DELETE_TOKEN());
@@ -46,7 +57,13 @@ export const Navigation = () => {
     <>
       <Ul variants={variants}>
         {Items.map((item:any) => (
-          <MenuItem id={item.id} key={item.id} text={item.text} onClick={item.onClick}/>
+          <MenuItem 
+            id={item.id} 
+            key={item.id} 
+            text={item.text} 
+            onClick={item.onClick}
+            profileImage={profileImage}
+          />
         ))}
       </Ul>
     </>

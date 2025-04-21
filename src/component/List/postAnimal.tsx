@@ -1,6 +1,7 @@
 import PostItem from "./postItem";
 import styled from 'styled-components';
 import { DataProps, ShelterDetailProps } from "../../constants/interface";
+import { useLocation } from "react-router-dom";
 
 interface PostItemProps {
     data: DataProps[] | ShelterDetailProps[];
@@ -22,6 +23,8 @@ const ScrollContainer = styled.div`
 `;
 
 const PostAnimal: React.FC<PostItemProps> = ({data}) => {
+    const pathname = useLocation().pathname;
+    const isLikePost = pathname === "/likePost";
     return(
         <ScrollContainer>
             {data.map((item: any) => (
