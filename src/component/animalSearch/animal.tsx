@@ -8,6 +8,8 @@ import './style.scss';
 import {list} from '../../mock/list';
 import { shelter } from "../../mock/shelter";
 import { DataProps, ShelterDetailProps } from "../../constants/interface";
+import { GrPowerReset } from "react-icons/gr";
+
 
 
 const AnimalSearch = ({text} : {text:string}) => {
@@ -94,7 +96,7 @@ const AnimalSearch = ({text} : {text:string}) => {
     <>
       <Header/>
       <div style={{width: "390px", overflow: "hidden"}}>
-        <div style={{display: "flex", flexDirection: "row", gap: "10px", paddingLeft: "10px", paddingTop: "20px"}}>
+        <div style={{display: "flex", flexDirection: "row", gap: "10px", paddingLeft: "10px", paddingTop: "20px", alignItems: "center"}}>
           <p className="search-title">{text}</p>
           <p className="search-unit">총 {filteredAnimals.length}건</p>
         </div>
@@ -153,7 +155,7 @@ const AnimalSearch = ({text} : {text:string}) => {
         <>
           <div className="result-container-wrapper">
             <div className="result-container">
-              <button className="reset-button" onClick={handleReset}>⟳</button>
+              <button className="reset-button" onClick={handleReset}><GrPowerReset/></button>
               <div className={isSearchComplete ? "badge complete" : "badge"}>{searchData.location || "모든 지역"}<HiChevronDown/></div>
               { text !== "보호소 리스트" && (
                 <>

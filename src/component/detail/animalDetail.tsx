@@ -2,11 +2,9 @@ import { useSpringCarousel } from "react-spring-carousel";
 import { DataProps } from "../../constants/interface";
 import { useLocation, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Header from "../header/header";
 import { IoMdShare } from "react-icons/io";
 import HeartIcon from "../../img/heart.svg";
 import HoverHeartIcon from "../../img/hoverHeart.svg";
-import Button from "../button/button";
 import DetailContainer from "./detailContainer";
 import ShareContainer from "../share/ShareContainer";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,8 +13,6 @@ import { TOGGLE_LIKE } from "../../reducer/tokenSlice";
 const AnimalDetail = () => {
   const data = useLocation().state as DataProps;
   const { id } = useParams();
-  console.log("Detail data:", data);
-  console.log("ID from params:", id);
   
   const [currentSlide, setCurrentSlide] = useState(0);
   const dispatch = useDispatch();
@@ -24,7 +20,7 @@ const AnimalDetail = () => {
   const [likeClicked, setLikeClicked] = useState(id ? likedPosts.includes(Number(id)) : false);
   const { handleShare, shareClicked } = ShareContainer({ data });
 
-  const { carouselFragment, slideToItem } = useSpringCarousel({
+  const { carouselFragment, slideToItem, slideToPrevItem, slideToNextItem } = useSpringCarousel({
     items: data?.images.map((image, index) => ({
       id: `image-${index}`,
       renderItem: (
@@ -41,6 +37,26 @@ const AnimalDetail = () => {
     })) || [],
     withLoop: true
   });
+
+  // 자동 슬라이드 기능
+  useEffect(() => {
+    const interval = setInterval(() => {
+      slideToNextItem();
+      setCurrentSlide((prev) => (prev + 1) % data.images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [slideToNextItem, data.images.length]);
+
+  const handleWheel = (e: React.WheelEvent) => {
+    if (e.deltaY > 0) {
+      slideToNextItem();
+      setCurrentSlide((prev) => (prev + 1) % data.images.length);
+    } else {
+      slideToPrevItem();
+      setCurrentSlide((prev) => (prev - 1 + data.images.length) % data.images.length);
+    }
+  };
 
   // 컴포넌트가 마운트될 때 현재 게시물의 좋아요 상태를 확인
   useEffect(() => {
@@ -63,7 +79,10 @@ const AnimalDetail = () => {
   return (
     <DetailContainer buttonText="채팅하기">
       {/* 이미지 캐러셀 */}
-      <div style={{ position: "relative", width: "100%", height: "300px", overflow: "hidden" }}>
+      <div 
+        style={{ position: "relative", width: "100%", height: "300px", overflow: "hidden" }}
+        onWheel={handleWheel}
+      >
         {carouselFragment}
         
         {/* Dot Indicators */}
@@ -74,7 +93,6 @@ const AnimalDetail = () => {
           transform: "translateX(-50%)",
           display: "flex",
           gap: "8px",
-          zIndex: 1
         }}>
           {data.images.map((_, index) => (
             <button
