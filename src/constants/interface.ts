@@ -101,3 +101,16 @@ export interface ShelterDetailProps {
   lat: number;
   lng: number;
 }
+export interface PostItemProps {
+  userImage: string;
+  userName: string;
+  userDescription: string;
+  postImages: string[];
+  postTitle: string;
+  postContent: string;
+  postDate: string;
+  postLike: number;
+  postComment: number;
+  postView: number;
+  postId: number;
+}

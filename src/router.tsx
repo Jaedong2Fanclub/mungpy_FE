@@ -17,6 +17,10 @@ import DetailAnimalPage from "./component/detail/animalDetail";
 import ShelterDetail from "./component/detail/shelterDetail";
 import MyPage from "./Pages/myPage";
 import LikeAnimalsPage from "./Pages/LikeAnimals";
+import CommunityPage from "./Pages/Community";
+import Help from "./component/community/Help";
+import Found from "./component/community/Found";
+import AdoptionReview from "./component/community/AdoptionReview";
 const Router = () => {
     return (
         <BrowserRouter>
@@ -45,6 +49,11 @@ const Router = () => {
                 <Route path='/searchResult' element={<SearchResultPage/>}/>
                 <Route path='/myPage' element={<MyPage/>}/>
                 <Route path='/likeAnimals' element={<LikeAnimalsPage/>}/>
+                <Route path="community" element={<CommunityPage />}>
+                    <Route path="help" element={<Help />} />
+                    <Route path="found" element={<Found />} />
+                    <Route path="adoption" element={<AdoptionReview />} />
+                </Route>
             </Routes>
         </BrowserRouter>
     )

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { DataProps, ShelterDetailProps } from "../../constants/interface";
+import { DataProps, ShelterDetailProps, PostItemProps } from "../../constants/interface";
 
-const ShareContainer = ({data} : {data: DataProps | ShelterDetailProps}) => {
+const ShareContainer = ({data} : {data: DataProps | ShelterDetailProps | PostItemProps}) => {
     const [shareClicked, setShareClicked] = useState(false);
 
     const handleShare = async () => {
