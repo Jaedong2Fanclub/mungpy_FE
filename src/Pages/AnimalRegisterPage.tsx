@@ -1,4 +1,4 @@
-import AnimalRegister from "../component/Registration/animalRegister";
+import AnimalRegister from "../component/registration/animalRegister";
 
 const AnimalRegisterPage = () => {
     return(
