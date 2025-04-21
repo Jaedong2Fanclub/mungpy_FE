@@ -1,15 +1,9 @@
+import { DataProps } from "../../constants/interface";
 import AnimaFindlItem from "./item";
 import styled from 'styled-components';
 
-interface dataProps {
-    id:number;
-    title:string;
-    subtitle: string;
-    image: string;
-}
-
 interface PostItemProps {
-    data: dataProps[];
+    data: DataProps[];
 }
 
 const ScrollContainer = styled.div`
@@ -27,14 +21,14 @@ const ScrollContainer = styled.div`
   scrollbar-width: none;
 `;
 
-const PostItem: React.FC<PostItemProps> = ({data}) => {
-    return(
-        <ScrollContainer>
-            {data.map((item: any) => (
-                <AnimaFindlItem key={item.id} {...item}/>
-            ))}
-        </ScrollContainer>
-    );
+const PostItem: React.FC<PostItemProps> = ({ data }) => {
+  return (
+    <ScrollContainer>
+      {data.map((item: any) => (
+        <AnimaFindlItem image={item.images[0]} {...item} />
+      ))}
+    </ScrollContainer>
+  );
 };
 
 export default PostItem;

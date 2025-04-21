@@ -71,7 +71,6 @@ export const GlobalStyle = createGlobalStyle`
   body{
       margin: 0;
       width : 390px;
-      display: flex;
       position: absolute;
       top: 50%;
       left: 50%;

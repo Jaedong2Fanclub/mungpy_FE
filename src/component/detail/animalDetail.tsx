@@ -1,7 +1,7 @@
 import { useSpringCarousel } from "react-spring-carousel";
 import { DataProps } from "../../constants/interface";
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Header from "../header/header";
 import { IoMdShare } from "react-icons/io";
 import HeartIcon from "../../img/heart.svg";
@@ -9,14 +9,22 @@ import HoverHeartIcon from "../../img/hoverHeart.svg";
 import Button from "../button/button";
 import DetailContainer from "./detailContainer";
 import ShareContainer from "../share/ShareContainer";
+import { useDispatch, useSelector } from "react-redux";
+import { TOGGLE_LIKE } from "../../reducer/tokenSlice";
 
 const AnimalDetail = () => {
   const data = useLocation().state as DataProps;
+  const { id } = useParams();
+  console.log("Detail data:", data);
+  console.log("ID from params:", id);
+  
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [likeClicked, setLikeClicked] = useState(false);
+  const dispatch = useDispatch();
+  const { likedPosts } = useSelector((state: any) => state.authToken);
+  const [likeClicked, setLikeClicked] = useState(id ? likedPosts.includes(Number(id)) : false);
   const { handleShare, shareClicked } = ShareContainer({ data });
 
-  const { carouselFragment, slideToPrevItem, slideToNextItem, slideToItem } = useSpringCarousel({
+  const { carouselFragment, slideToItem } = useSpringCarousel({
     items: data?.images.map((image, index) => ({
       id: `image-${index}`,
       renderItem: (
@@ -34,12 +42,22 @@ const AnimalDetail = () => {
     withLoop: true
   });
 
+  // 컴포넌트가 마운트될 때 현재 게시물의 좋아요 상태를 확인
+  useEffect(() => {
+    if (id) {
+      setLikeClicked(likedPosts.includes(Number(id)));
+    }
+  }, [likedPosts, id]);
+
   if (!data) {
     return <p>Loading...</p>;
   }
 
   const likeHandleClick = () => {
-    setLikeClicked(!likeClicked);
+    if (id) {
+      console.log("Toggling like for post ID:", id);
+      dispatch(TOGGLE_LIKE(Number(id)));
+    }
   }
 
   return (
@@ -97,9 +115,9 @@ const AnimalDetail = () => {
                 onClick={likeHandleClick}
               >
                 {likeClicked ? 
-                  <img src={HeartIcon} alt="heart" style={{width: "20px", height: "20px"}}/>
-                  :
                   <img src={HoverHeartIcon} alt="heart" style={{width: "20px", height: "20px"}}/>
+                  :
+                  <img src={HeartIcon} alt="heart" style={{width: "20px", height: "20px"}}/>
                 }
               </button>
             </div>

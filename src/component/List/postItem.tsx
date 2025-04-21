@@ -2,6 +2,7 @@ import {useNavigate, useLocation} from "react-router-dom";
 import styled from "styled-components";
 import HomeIcon from "../../img/home.svg";
 import { DataProps, ShelterDetailProps } from "../../constants/interface";
+import HoverHeartIcon from "../../img/hoverHeart.svg";
 
 const ItemWrapper = styled.div`
   min-width: 100%;
@@ -48,6 +49,8 @@ const isShelterProps = (props: DataProps | ShelterDetailProps): props is Shelter
 
 const PostItem: React.FC<DataProps | ShelterDetailProps> = (props) => {
   const nav = useNavigate();
+  const pathname = useLocation().pathname;
+  const isLikePost = pathname === "/likeAnimals";
 
   const handleSelect = () => {
     if (!isShelterProps(props)) {
@@ -112,17 +115,81 @@ const PostItem: React.FC<DataProps | ShelterDetailProps> = (props) => {
     <ItemWrapper onClick={handleSelect}>
       <ItemImg src={props.images[0]} alt={props.breedName} />
       <TextWrapper>
-        <div style={{ fontWeight: 'bold' }}>
-          <p>{props.breedName}</p>
+        <div style={{ fontWeight: "bold" }}>
+          {isLikePost ? (
+            <div
+              style={{
+                display: "flex",
+                gap: "5px",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              <p>{props.breedName}</p>
+              <img
+                src={HoverHeartIcon}
+                alt="heart"
+                style={{ width: "20px", height: "20px" }}
+              />
+            </div>
+          ) : (
+            <>
+              <p>{props.breedName}</p>
+            </>
+          )}
           <ShelterWrapper>
-            <img src={HomeIcon} alt="home" style={{width: "15px", height: "15px"}} />
-            <p style={{fontSize: "11px", color: "#818181", fontWeight: "normal"}}>{props.shelterName}</p>
+            <img
+              src={HomeIcon}
+              alt="home"
+              style={{ width: "15px", height: "15px" }}
+            />
+            <p
+              style={{
+                fontSize: "11px",
+                color: "#818181",
+                fontWeight: "normal",
+              }}
+            >
+              {props.shelterName}
+            </p>
           </ShelterWrapper>
           <GenderWrapper>
-            <p style={{fontSize: "11px", color: "#818181", fontWeight: "normal"}}>{props.gender}</p>
-            <p style={{fontSize: "11px", color: "#818181", fontWeight: "normal"}}>({props.isNeutered})</p>
-            <p style={{fontSize: "11px", color: "#818181", fontWeight: "normal"}}>{props.age}</p>
-            <p style={{fontSize: "11px", color: "#818181", fontWeight: "normal"}}>{props.weight}</p>
+            <p
+              style={{
+                fontSize: "11px",
+                color: "#818181",
+                fontWeight: "normal",
+              }}
+            >
+              {props.gender}
+            </p>
+            <p
+              style={{
+                fontSize: "11px",
+                color: "#818181",
+                fontWeight: "normal",
+              }}
+            >
+              ({props.isNeutered})
+            </p>
+            <p
+              style={{
+                fontSize: "11px",
+                color: "#818181",
+                fontWeight: "normal",
+              }}
+            >
+              {props.age}
+            </p>
+            <p
+              style={{
+                fontSize: "11px",
+                color: "#818181",
+                fontWeight: "normal",
+              }}
+            >
+              {props.weight}kg
+            </p>
           </GenderWrapper>
         </div>
       </TextWrapper>
