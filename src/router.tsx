@@ -5,7 +5,7 @@ import ResultPage from "./Pages/resultPage";
 import DetailPage from "./Pages/detailPage";
 import Home from "./component/Home/home";
 import AnimalRegister from "./Pages/AnimalRegisterPage";
-import ShelterRegister from "./component/Registration/shelterRegister";
+import ShelterRegister from "./component/registration/shelterRegister";
 import AnimalSearchPage from "./Pages/animalSearchPage";
 import ChatPage from "./Pages/ChatPage";
 import SearchResultPage from "./Pages/SearchResultPage";
