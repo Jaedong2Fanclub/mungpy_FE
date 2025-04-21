@@ -1,23 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Main from "./page/mainPage"
-import ProfileUploadPage from "./page/profilePage";
-import PersonalityPage from "./page/PersonalityPage";
-import LoadingPage from "./page/loadingPage";
-import ResultPage from "./page/resultPage";
-import DetailPage from "./page/detailPage";
-import Home from "./components/Home/home";
-import AnimalRegister from "./page/AnimalRegisterPage";
-import ShelterRegister from "./components/Registration/shelterRegister";
-import AnimalSearchPage from "./page/animalSearchPage";
-import DetailAnimalPage from "./page/DetailAnimalPage";
-import ChatPage from "./page/ChatPage";
-import SearchResultPage from "./page/SearchResultPage";
-import ShelterSearchPage from "./page/ShelterSearchPage";
-import { LoginPage } from "./page/login";
-import JoinPage from "./page/joinPage";
-import AnimalSelector from "./components/Main/carOrDog";
-import { Matching } from "./components/Main/matching/matching";
-
+import Main from "./Pages/mainPage"
+import LoadingPage from "./Pages/loadingPage";
+import ResultPage from "./Pages/resultPage";
+import DetailPage from "./Pages/detailPage";
+import Home from "./component/Home/home";
+import AnimalRegister from "./Pages/AnimalRegisterPage";
+import ShelterRegister from "./component/Registration/shelterRegister";
+import AnimalSearchPage from "./Pages/animalSearchPage";
+import ChatPage from "./Pages/ChatPage";
+import SearchResultPage from "./Pages/SearchResultPage";
+import ShelterSearchPage from "./Pages/ShelterSearchPage";
+import { LoginPage } from "./Pages/login";
+import JoinPage from "./Pages/joinPage";
+import { Matching } from "./component/Main/matching/matching";
+import DetailAnimalPage from "./component/detail/animalDetail";
+import ShelterDetail from "./component/detail/shelterDetail";
 const Router = () => {
     return (
         <BrowserRouter>
@@ -42,6 +39,7 @@ const Router = () => {
                 <Route path="/shelterSearch" element={<ShelterSearchPage/>}/>
                 <Route path='/animal/:id' element={<DetailAnimalPage/>}/>
                 <Route path='/animal/:id/chat' element={<ChatPage/>}/>
+                <Route path='/shelter/:id' element={<ShelterDetail/>}/>
                 <Route path='/searchResult' element={<SearchResultPage/>}/>
             </Routes>
         </BrowserRouter>

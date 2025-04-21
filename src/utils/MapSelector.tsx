@@ -34,7 +34,7 @@ const MapSelector= ({onSelect}: { onSelect: (sido: string, sigugun: string) => v
 
   useEffect(() => {
     onSelect(sido, sigugun);
-  },[sido,sigugun, onSelect]);
+  },[sido,sigugun]);
 
   return (
     <div className="location-selector">

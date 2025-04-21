@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import * as E from "../../constants/formRequitements"
 import axios from "axios";
 import Input from "../Input/input";
-import { Error, InputWrapper, PasswordStrength } from "./joinStyle";
+import { Error, ModalStyles, InputWrapper, PasswordStrength, OverlayStyles } from "./joinStyle";
 import Button from "../button/button";
 // import Modal from "../modal/modal";
 import "./style.scss"
@@ -91,7 +91,7 @@ const isAllRequiredChecked = checkedOptions.every(option => !option.isRequired |
     try {
       const CheckRes = await axios.get(
         // api 주소
-        `${process.env.REACT_APP_API_URL}/auth/exist/idCheck/${id}`
+        `/auth/exist/idCheck/${id}`
       );
       if(CheckRes.data.duplicate === true) {
         setIdCheckResult({message : "이미 사용중인 아이디입니다.", type: "error"});
@@ -112,7 +112,7 @@ const isAllRequiredChecked = checkedOptions.every(option => !option.isRequired |
 
     const userData = {
       shelterName: data.shelterName,
-      email : data.id,
+      id : data.id,
       address: `${address} ${detailedAddress}`,
       zonecode: zonecode,
       name : data.name,
@@ -128,7 +128,7 @@ const isAllRequiredChecked = checkedOptions.every(option => !option.isRequired |
   }
   setIsLoading(true);
   try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`,userData,{
+      const res = await axios.post(`/api/signup`,userData,{
           headers: {
               "Content-Type": "application/json",
           }
@@ -160,7 +160,7 @@ const isAllRequiredChecked = checkedOptions.every(option => !option.isRequired |
           <InputWrapper>
             <Input
               title="아이디"
-              placeholder="아이디를 입력해주세요(이메일)"
+              placeholder="아이디를 입력해주세요(8자이내)"
               type="text"
               {...register("id", {
                 required : E.idValidation.require,

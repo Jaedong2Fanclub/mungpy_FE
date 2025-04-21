@@ -69,3 +69,35 @@ export interface SignupProps {
   password: string;
   passwordConfirm: string;
 }
+export interface DataProps {
+  id: number;
+  gender: string;
+  age: string;
+  isNeutered: string;
+  weight: number | string;  // 숫자와 문자열 모두 허용
+  email: string;
+  characteristics: string;
+  name: string;
+  rescuePlace: string;
+  rescuePlaceLink: string;
+  rescueDetail: string;
+  breedName: string;
+  ownerName: string;
+  shelterName: string;
+  telno: string;
+  images: string[]; // 이미지 배열
+}
+
+export interface ShelterDetailProps {
+  id: number;
+  shelterName: string;
+  companyName: string;
+  address: string;
+  link: string;
+  telno: string;
+  email: string;
+  description: string;
+  image: string;
+  lat: number;
+  lng: number;
+}

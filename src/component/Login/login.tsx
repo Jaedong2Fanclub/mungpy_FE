@@ -14,6 +14,7 @@ import NaverLogin from "../../img/naverButton.png"
 import SitDog from "../../img/sitDog.svg"
 import Logo from "../../img/mungpyLogo.svg";
 import UpDog from "../../img/upDog.svg";
+// 이제 좀 올라가보자 ~
 
 const Error = styled.p`
     color: #FF0001;
@@ -193,7 +194,7 @@ const Login = () => {
     console.log(data);
     setIsLoading(true);
     const formData = {
-      email : data.id,
+      id : data.id,
       password : data.password
     };
 
@@ -203,7 +204,7 @@ const Login = () => {
       return;
     }
     try {
-    const res = await axios.post(`${process.env.REACT_APP_API_URL}/login`, formData, {
+    const res = await axios.post(`api url`, formData, {
       headers: {
         withCredentials: true,
       },
@@ -266,7 +267,7 @@ const Login = () => {
               placeholder="아이디 입력"
               {...register("id", {
                 required: E.idValidation.require,
-                maxLength: E.idValidation.maxLength
+                maxLength : E.idValidation.maxLength
               })}
             />
             {errors.id && <Error>{errors.id.message}</Error>}
