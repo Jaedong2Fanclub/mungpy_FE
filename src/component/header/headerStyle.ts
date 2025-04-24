@@ -7,7 +7,7 @@ export const Nav = styled(motion.nav)<{ isOpen: boolean }>`
   right: 0;
   bottom: 0;
   width: 300px;
-  z-index: 1;
+  z-index: 10;
   pointer-events: ${({ isOpen }) => (isOpen ? "auto" : "none")};
 `;
 
@@ -24,7 +24,7 @@ export const MenuToggleWrapp = styled.div`
   position: absolute;
   top: 20px;
   right: 20px;
-  z-index: 2; // ✅ Nav보다 위에 있어야 함
+  z-index: 100; // ✅ Nav보다 위에 있어야 함
 `;
 
 export const Ul = styled(motion.ul)`

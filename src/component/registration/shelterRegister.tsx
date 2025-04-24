@@ -58,18 +58,19 @@ const ShelterRegister = () => {
 
   return (
     <div style={{ width: "390px" }}>
-      {/* <Header/> */}
+      <Header/>
       <div
         style={{
           display: "flex",
           justifyContent: "center",
           marginTop: "1rem",
           fontWeight: "700",
+          borderBottom: "3px solid #F6F6F6",
+          paddingBottom: "1rem"
         }}
       >
         유기견/묘 등록
       </div>
-      <hr />
       <div>
         {location.pathname === "/shelterRegister" && (
           <ShelterRegister1 onNext={handleNext} />
