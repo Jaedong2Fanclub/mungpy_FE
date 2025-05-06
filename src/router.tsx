@@ -46,7 +46,7 @@ const Router = () => {
                 <Route path='/animalSearch' element={<AnimalSearchPage/>}/>
                 <Route path="/shelterSearch" element={<ShelterSearchPage/>}/>
                 <Route path='/animal/:id' element={<DetailAnimalPage/>}/>
-                <Route path='/animal/:id/chat' element={<ChatPage/>}/>
+                <Route path='/animal/chat/:id' element={<ChatPage/>}/>
                 <Route path='/shelter/:id' element={<ShelterDetail/>}/>
                 <Route path='/searchResult' element={<SearchResultPage/>}/>
                 <Route path='/myPage' element={<MyPage/>}/>

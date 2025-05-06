@@ -153,7 +153,7 @@ const MyPageComponent = () => {
               </div>
               <FaAngleRight style={{ color: "#9C9C9C" }} />
             </Li>
-            <Li onClick={() => navigate("/mypage/post")}>
+            <Li onClick={() => navigate("/myPage/post")}>
               <div
                 style={{
                   display: "flex",

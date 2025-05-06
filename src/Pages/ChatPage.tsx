@@ -1,7 +1,9 @@
+import Chat from "../component/chat/chat";
+
 const ChatPage = () => {
     return(
         <>
-            ChatPage
+            <Chat />
         </>
     )
 }

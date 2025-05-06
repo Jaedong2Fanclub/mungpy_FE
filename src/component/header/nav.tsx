@@ -41,13 +41,15 @@ export const Navigation = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // original code
-  // const {username, profileImage} = useSelector((state:any) => state.authToken);
+  const {username, profileImage} = useSelector((state:any) => state.authToken);
   
   // mock data
-  const { username, profileImage } = MockuserData;
+  // const { username, profileImage } = MockuserData;
 
   const Logout = () => {
     dispatch(DELETE_TOKEN());
+    localStorage.removeItem("token");
+    navigate("/home");
     console.log("logout");
   }
 

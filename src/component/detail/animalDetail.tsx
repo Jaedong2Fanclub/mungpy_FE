@@ -1,6 +1,6 @@
 import { useSpringCarousel } from "react-spring-carousel";
 import { DataProps } from "../../constants/interface";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { IoMdShare } from "react-icons/io";
 import HeartIcon from "../../img/heart.svg";
@@ -13,6 +13,7 @@ import { TOGGLE_LIKE } from "../../reducer/tokenSlice";
 const AnimalDetail = () => {
   const data = useLocation().state as DataProps;
   const { id } = useParams();
+  const navigate = useNavigate();
   
   const [currentSlide, setCurrentSlide] = useState(0);
   const dispatch = useDispatch();
@@ -76,8 +77,13 @@ const AnimalDetail = () => {
     }
   }
 
+  const handleChat = () => {
+    navigate(`/animal/chat/${id}`, {state: {data : data, animalId: id}});
+  }
+  console.log(data);
+
   return (
-    <DetailContainer buttonText="채팅하기">
+    <DetailContainer buttonText="채팅하기" onClick={handleChat}>
       {/* 이미지 캐러셀 */}
       <div 
         style={{ position: "relative", width: "100%", height: "300px", overflow: "hidden" }}

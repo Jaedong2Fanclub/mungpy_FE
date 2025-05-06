@@ -24,8 +24,12 @@ const ShelterDetail = () => {
     setLikeClicked(!likeClicked);
   }
 
+  const handleMessage = () => {
+    console.log("문의하기");
+  }
+
   return (
-    <DetailContainer buttonText="문의하기">
+    <DetailContainer buttonText="문의하기" onClick={handleMessage}>
       {/* 보호소 정보 */}
       <div>
         <div style={{display: "flex", flexDirection: "column", padding: "15px"}}>

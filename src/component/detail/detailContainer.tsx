@@ -1,7 +1,7 @@
 import Header from "../header/header";
 import Button from "../button/button";
 
-const DetailContainer = ({children, buttonText}: {children: React.ReactNode, buttonText: string}) => {
+const DetailContainer = ({children, buttonText, onClick}: {children: React.ReactNode, buttonText: string, onClick: () => void}) => {
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <Header/>
@@ -22,6 +22,7 @@ const DetailContainer = ({children, buttonText}: {children: React.ReactNode, but
             height: "50px", 
             borderRadius: "10px"
           }}
+          onClick={onClick}
         >
           {buttonText}
         </Button>

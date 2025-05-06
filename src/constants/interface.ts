@@ -123,3 +123,11 @@ export interface PostItemProps {
   postId: number;
   comments: CommentProps[];
 }
+
+export interface MessageProps {
+  chatMessageId: number;
+  roomId: number;
+  senderId: number;
+  content: string;
+  createdAt: string;
+}
